@@ -1,0 +1,9 @@
+body,header{
+  width: 100%;
+  max-width: 1940px;
+  margin: 0 auto;
+}
+
+.header_bg{
+  background-color: #6664ba;
+}
