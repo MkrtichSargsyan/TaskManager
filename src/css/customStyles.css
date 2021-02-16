@@ -7,3 +7,11 @@ body,header{
 .header_bg{
   background-color: #6664ba;
 }
+
+.sidebar_bg{
+  background-color: #f8f8f8;
+}
+
+.bor{
+  border:1px solid black
+}
