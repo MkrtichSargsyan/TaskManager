@@ -12,6 +12,14 @@ body,header,footer{
   background-color: #f8f8f8;
 }
 
+aside li:hover{
+  color:#6664ba
+}
+
 .bor{
   border:1px solid black
+}
+
+.courgetteFont{
+  font-family: 'Courgette', cursive;
 }
