@@ -6,6 +6,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Task Manager</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Courgette&display=swap" rel="stylesheet">
 <script defer src="main.js"></script></head>
 
 <body>
@@ -28,14 +30,72 @@
     </nav>
   </header>  <main class="bg-gray-50 h-screen pt-14 flex flex-row">
     <aside class="fixed h-screen w-96 pl-32 pt-24">
-        <div class="h-64 sidebar_bg shadow-sm">
-          <h3>Year goals</h3>
-          <h3>Week goals</h3>
-          <h3>Today goals</h3>
-        </div>
-      </aside>  <div class="h-screen ml-96 flex-1 pt-24 px-12 pr-32">
+      <div class="sidebar_bg shadow-sm">
+        <ul>
+          <li class='flex justify-between mb-5 text-xl courgetteFont text-gray-500 cursor-pointer font-semibold'>
+            <h3>
+              All goals
+            </h3>
+            <span>3/5</span>
+          </li>
+          <li class='flex justify-between mb-5 text-xl courgetteFont text-gray-500 cursor-pointer font-semibold'>
+            <h3>
+              Year goals
+            </h3>
+            <span>3/5</span>
+          </li>
+          <li class='flex justify-between mb-5 text-xl courgetteFont text-gray-500 cursor-pointer font-semibold'>
+            <h3>
+              Week goals
+            </h3>
+            <span>3/5</span>
+          </li>
+          <li class='flex justify-between mb-5 text-xl courgetteFont text-gray-500 cursor-pointer font-semibold'>
+            <h3>
+              Today goals
+            </h3>
+            <span>3/5</span>
+          </li>
+          <li class='flex justify-between mb-16 text-xl courgetteFont text-gray-500 cursor-pointer font-semibold'>
+            <h3>
+              Specific day goals
+            </h3>
+            <span>3/5</span>
+          </li>
+        </ul>
+    
+        <blockquote>
+          True success is all about working towards meaningful goals and dreams.
+        </blockquote>
+      </div>
+    </aside>  <div class="h-screen ml-96 flex-1 pt-24 px-12 pr-32">
       <div class="bor w-full h-64"></div>
-    </div></main></body>
+    </div></main>  <footer class='header_bg fixed bottom-0 text-white h-46 p-4'>
+  
+    <div class='flex'>
+      <div class='flex-1 flex justify-center items-center'>
+        <img alt="eman" id='eman' class='h-16 w-16 rounded-full mr-4'>
+        <div class="flex flex-col">
+          <a href="https://github.com/emasdev" target="_blank"
+            class='mb-2 px-4 p-1 bg-gradient-to-r from-green-400 to-blue-500 hover:from-green-400 hover:to-blue-700'>Github</a>
+          <a href="https://www.linkedin.com/in/emasdev/" target="_blank"
+            class='px-4 p-1 bg-gradient-to-r from-green-400 to-blue-500 hover:from-green-400 hover:to-blue-700'>Linkedin</a>
+        </div>
+      </div>
+      <p class='flex-1 flex justify-center items-center'>
+        Made with <span style="color: #e25555;">&#9829;</span> by Emanuel and Mike
+      </p>
+      <div class='flex-1 flex justify-center items-center'>
+        <img alt="mike" id='mike' class='h-16 w-16 rounded-full mr-4'>
+        <div class="flex flex-col">
+          <a href="https://github.com/MkrtichSargsyan" target="_blank"
+            class='px-4 p-1 mb-2 bg-gradient-to-r from-green-400 to-blue-500 hover:from-green-400 hover:to-blue-700'>Github</a>
+          <a href="https://www.linkedin.com/in/mkrtich-sargsyan/" target="_blank"
+            class='px-4 p-1 bg-gradient-to-r from-green-400 to-blue-500 hover:from-green-400 hover:to-blue-700'>Linkedin</a>
+        </div>
+      </div>
+    </div>
+  </footer></body>
 
 <!-- The core Firebase JS SDK is always required and must be listed first -->
 <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-app.js"></script>
