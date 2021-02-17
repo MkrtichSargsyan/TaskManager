@@ -1,7 +1,9 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const HtmlWebpackPartialsPlugin = require("html-webpack-partials-plugin");
 
 module.exports = {
+  mode: "development",
   entry: "./src/index.js",
 
   output: {
@@ -11,8 +13,14 @@ module.exports = {
 
   plugins: [
     new HtmlWebpackPlugin({
+      title: "ToDo",
       template: "./src/index.html",
-      filename: "./index.html",
+    }),
+    new HtmlWebpackPartialsPlugin({
+      path: "./src/partials/header.html",
+    }),
+    new HtmlWebpackPartialsPlugin({
+      path: "./src/partials/main.html",
     }),
   ],
 

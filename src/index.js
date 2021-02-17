@@ -1,6 +1,11 @@
-import '../node_modules/normalize.css';
-import './css/style.css';
-import './css/customStyles.css';
-import header from './components/header.js'
+import "../node_modules/normalize.css";
+import "./css/style.css";
+import "./css/customStyles.css";
+import logo from "./images/logo.png";
 
-header
+const logoElm = document.getElementById("logo");
+logoElm.setAttribute("src", logo);
+
+// import header from './components/header.js'
+
+// header

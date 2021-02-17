@@ -1,1 +1,29 @@
-<!DOCTYPE html> <html lang="en"> <head> <meta charset="UTF-8"/> <meta http-equiv="X-UA-Compatible" content="IE=edge"/> <meta name="viewport" content="width=device-width,initial-scale=1"/> <title>Document</title> <script defer src="main.js"></script></head> <body> <header class="z-10 w-full fixed p-2 header_bg"> </header> <main class="h-screen pt-50 flex flex-row"> <aside class="bg-blue w-24 bg-red-200 h-screen">Menu</aside> <div class="bg-purple h-screen flex-1 bg-red-500">Main</div> </main> <footer></footer> </body> <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-app.js"></script> <script>var firebaseConfig={apiKey:"AIzaSyAG3JcaJWV-Nd-s1SRVYgAP_y49eoHXeaI",authDomain:"todo-list-c32f2.firebaseapp.com",projectId:"todo-list-c32f2",storageBucket:"todo-list-c32f2.appspot.com",messagingSenderId:"129154481425",appId:"1:129154481425:web:27013ad934f9035a6c20b0"};firebase.initializeApp(firebaseConfig)</script> </html> 
+<!DOCTYPE html> <html lang="en"> <head> <meta charset="UTF-8"/> <meta http-equiv="X-UA-Compatible" content="IE=edge"/> <meta name="viewport" content="width=device-width,initial-scale=1"/> <title>Document</title> <script defer src="main.js"></script></head> <body> <header class="z-10 w-full fixed p-2 header_bg">
+  <nav class="flex justify-between h-10">
+    <div class='flex flex-1'>
+      <img class='h-full mr-4' src="https://img.icons8.com/cotton/512/ffffff/home--v1.png" />
+      <div class="shadow flex h-full">
+        <input class="w-full rounded p-2" type="text" placeholder="Search...">
+        <button class="bg-white w-auto flex justify-end items-center text-blue-500 p-2 hover:text-blue-400">
+          <img src="https://img.icons8.com/metro/26/000000/search.png" />
+        </button>
+      </div>
+    </div>
+    <div class='h-full flex-1 justify-center'><img class='h-full m-auto' id="logo" alt="logo" /></div>
+    <div class='flex flex-1 justify-end items-center'>
+      <img class='h-4/5' src="https://img.icons8.com/ultraviolet/480/ffffff/plus.png" />
+      <img src="https://img.icons8.com/doodle/50/000000/user-male.png" />
+    </div>
+  </nav>
+</header><main class="bg-gray-50 h-screen pt-14 flex flex-row">
+  <aside class="fixed h-screen w-96 pl-32 pt-24">
+    <div class="h-64 sidebar_bg shadow-sm">
+      <h3>Year goals</h3>
+      <h3>Week goals</h3>
+      <h3>Today goals</h3>
+    </div>
+  </aside>
+  <div class="h-screen ml-96 flex-1 pt-24 px-12 pr-32">
+    <div class="bor w-full h-64"></div>
+  </div>
+</main></body> <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-app.js"></script> <script>var firebaseConfig={apiKey:"AIzaSyAG3JcaJWV-Nd-s1SRVYgAP_y49eoHXeaI",authDomain:"todo-list-c32f2.firebaseapp.com",projectId:"todo-list-c32f2",storageBucket:"todo-list-c32f2.appspot.com",messagingSenderId:"129154481425",appId:"1:129154481425:web:27013ad934f9035a6c20b0"};firebase.initializeApp(firebaseConfig)</script> </html>
