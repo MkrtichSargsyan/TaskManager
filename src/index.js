@@ -3,18 +3,30 @@ import "./css/style.css";
 import "./css/customStyles.css";
 import generateImages from "./generateImages";
 generateImages
-import { generateProjects, addProjectsToNode } from "./controllers/projectsController";
+import Goal from "./controllers/projectsController";
 
-const projectsElm = document.getElementById("projects-container");
+const goalsContainer = document.getElementById("goals-container");
+const openModal = document.getElementById("open-modal-btn");
+const closeModal = document.getElementsByClassName("close-modal");
 const addGoalBtn = document.getElementById("add-goal-btn");
-const closeModal = document.getElementsByClassName("close-modal")
+
+/* Goals Form */
+const goalForm = {
+  title: document.getElementById("goal-title"),
+  category: document.getElementById("goal-category")
+}
+
 const modal = document.getElementById("modal");
 
 
-let projects = generateProjects();
-addProjectsToNode(projects, projectsElm);
+let goals = Goal.generateGoals();
 
-addGoalBtn.addEventListener("click", () => {
+goals.forEach(project => {
+  project.addTo(goalsContainer);
+});
+
+
+openModal.addEventListener("click", () => {
   modal.classList.remove("hidden");
 })
 
@@ -25,3 +37,12 @@ for (let index = 0; index < closeModal.length; index++) {
   })
   
 }
+
+addGoalBtn.addEventListener("click", () => {
+  const goal = new Goal(
+    goalForm.title.value, 
+    goalForm.category.value
+  );
+  goal.addTo(goalsContainer);
+  modal.classList.add("hidden");
+})
