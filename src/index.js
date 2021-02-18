@@ -9,7 +9,6 @@ const openModal = document.getElementById("open-modal-btn");
 const closeModal = document.getElementsByClassName("close-modal");
 const addGoalBtn = document.getElementById("add-goal-btn");
 
-
 /* Goals Form */
 const goalForm = {
   title: document.getElementById("goal-title"),
@@ -24,11 +23,10 @@ goals.forEach((goal) => {
   goal.create();
 });
 
-console.log(Goal.goalsAmount);
-// all.innerHTML = `${Goal.goalsAmount.all.total}/${Goal.getGoalsAmount().all.done}`;
-// year.innerHTML = `${Goal.getGoalsAmount().year.total}/${Goal.getGoalsAmount().year.done}`;
-// week.innerHTML = `${Goal.getGoalsAmount().week.total}/${Goal.getGoalsAmount().week.done}`;
-// today.innerHTML = `${Goal.getGoalsAmount().today.total}/${Goal.getGoalsAmount().today.done}`;
+all.innerHTML = `${Goal.goalsAmount.all.total}/${Goal.goalsAmount.all.done}`;
+year.innerHTML = `${Goal.goalsAmount.year.total}/${Goal.goalsAmount.year.done}`;
+week.innerHTML = `${Goal.goalsAmount.week.total}/${Goal.goalsAmount.week.done}`;
+today.innerHTML = `${Goal.goalsAmount.today.total}/${Goal.goalsAmount.today.done}`;
 
 openModal.addEventListener("click", () => {
   modal.classList.remove("hidden");
@@ -43,6 +41,10 @@ for (let index = 0; index < closeModal.length; index++) {
 
 addGoalBtn.addEventListener("click", () => {
   const goal = new Goal(goalForm.title.value, goalForm.category.value);
-  goal.addGoal();
+  goal.create();
+  all.innerHTML = `${Goal.goalsAmount.all.total}/${Goal.goalsAmount.all.done}`;
+  year.innerHTML = `${Goal.goalsAmount.year.total}/${Goal.goalsAmount.year.done}`;
+  week.innerHTML = `${Goal.goalsAmount.week.total}/${Goal.goalsAmount.week.done}`;
+  today.innerHTML = `${Goal.goalsAmount.today.total}/${Goal.goalsAmount.today.done}`;
   modal.classList.add("hidden");
 });

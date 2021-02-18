@@ -56,7 +56,7 @@ class Goal {
     </article>
   `;
     node.innerHTML = html;
-    this.constructor.goalsAmount[this.category]++;
+    this.constructor.goalsAmount[this.category].total++;
     goalsContainer.appendChild(node);
   }
 
