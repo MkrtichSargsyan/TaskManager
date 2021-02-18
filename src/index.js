@@ -5,8 +5,7 @@ import generateImages from "./generateImages";
 import Goal from "./models/goal";
 import generateDefault from "./generateDefault";
 generateImages;
-generateDefault
-
+generateDefault;
 
 const openModal = document.getElementById("open-modal-btn");
 const closeModal = document.getElementsByClassName("close-modal");
@@ -17,9 +16,7 @@ const goalForm = {
   category: document.getElementById("goal-category"),
 };
 
-
 const modal = document.getElementById("modal");
-
 
 openModal.addEventListener("click", () => {
   modal.classList.remove("hidden");
