@@ -5,12 +5,31 @@ class Goal {
     this.title = title;
     this.category = category;
   }
+  static goalsAmount = {
+    all: {
+      total: 0,
+      done: 0,
+    },
+    year: {
+      total: 0,
+      done: 0,
+    },
+    week: {
+      total: 0,
+      done: 0,
+    },
+    today: {
+      total: 0,
+      done: 0,
+    },
+  };
 
-  addGoal() {
+
+  create() {
     let node = document.createElement("div");
     node.className = "mb-8 px-1 w-full md:w-1/2 lg:px-4 lg:w-1/3";
     let html = `
-    <article class="overflow-hidden rounded-lg shadow-lg">
+    <article class="bg-gray-200 overflow-hidden rounded-lg shadow-lg">
       <a href="#">
         <img alt="Placeholder" class="block h-auto w-full" src="https://picsum.photos/600/400/?random">
       </a>
@@ -37,6 +56,7 @@ class Goal {
     </article>
   `;
     node.innerHTML = html;
+    this.constructor.goalsAmount[this.category]++;
     goalsContainer.appendChild(node);
   }
 

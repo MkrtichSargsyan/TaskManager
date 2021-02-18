@@ -19,6 +19,7 @@ module.exports = {
 
   module: {
     rules: [
+     
       {
         test: /\.css$/,
         use: [
@@ -29,6 +30,17 @@ module.exports = {
           },
           "postcss-loader",
         ],
+      },
+      {
+        test: /\.m?js$/,
+        exclude: /(node_modules|bower_components)/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env'],
+            plugins: ['@babel/plugin-proposal-class-properties']
+          }
+        }
       },
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/i,
