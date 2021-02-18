@@ -2,10 +2,8 @@ import "../node_modules/normalize.css";
 import "./css/style.css";
 import "./css/customStyles.css";
 import generateImages from "./generateImages";
-generateImages
 import Goal from "./models/goal";
-
-const all = document.getElementById('all')
+generateImages
 
 const openModal = document.getElementById("open-modal-btn");
 const closeModal = document.getElementsByClassName("close-modal");

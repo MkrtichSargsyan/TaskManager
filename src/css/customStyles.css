@@ -1,25 +1,85 @@
-body,header,footer{
+body,
+header,
+footer {
   width: 100%;
   max-width: 1940px;
   margin: 0 auto;
 }
 
-.header_bg{
+.header_bg {
   background-color: #6664ba;
 }
 
-.sidebar_bg{
+.sidebar_bg {
   background-color: #f8f8f8;
 }
 
-aside li:hover{
-  color:#6664ba
+aside li:hover {
+  color: #6664ba;
 }
 
-.bor{
-  border:1px solid black
+.bor {
+  border: 1px solid black;
 }
 
-.courgetteFont{
-  font-family: 'Courgette', cursive;
+.courgetteFont {
+  font-family: "Courgette", cursive;
+}
+
+/* quote */
+
+#ct {
+  background-color: rgb(14, 13, 13);
+  width: 100%;
+  border: 1px solid #f1c40f;
+  margin: 100px auto;
+  text-align: center;
+  position: relative;
+  color: #fff;
+  padding: 15px;
+}
+#ct span {
+  background: #1d1f20;
+  color: #f1c40f;
+  padding: 0 10px;
+  font-size: 20px;
+  position: relative;
+  top: -28px;
+}
+#ct .corner {
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  border: 1px solid #fff;
+  transform: rotate(-45deg);
+  position: absolute;
+  background: #f8f8f8;
+}
+
+#ct #left_top {
+  top: -16px;
+  left: -16px;
+  border-color: transparent transparent #f1c40f transparent;
+}
+#ct #right_top {
+  top: -16px;
+  right: -16px;
+  border-color: transparent transparent transparent #f1c40f;
+}
+#ct #left_bottom {
+  bottom: -16px;
+  left: -16px;
+  border-color: transparent #f1c40f transparent transparent;
+}
+#ct #right_bottom {
+  bottom: -16px;
+  right: -16px;
+  border-color: #f1c40f transparent transparent transparent;
+}
+#ct p {
+  padding-top: 13px;
+  font-size: 18px;
+}
+#ct p i{
+  color: white;
 }
