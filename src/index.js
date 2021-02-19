@@ -10,6 +10,7 @@ generateImages;
 modal;
 
 const addGoalBtn = document.getElementById("add-goal-btn");
+const removeGoalBtn = document.getElementById("remove-goal-btn");
 const sidebarLinks = Array.from(
   document.getElementById("sidebar-links").getElementsByTagName("li")
 );
@@ -72,3 +73,5 @@ addGoalBtn.addEventListener("click", () => {
     document.getElementById("modal").classList.add("hidden");
   }
 });
+
+

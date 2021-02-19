@@ -3,6 +3,8 @@ export default (() => {
   const closeModal = document.getElementsByClassName("close-modal");
 
   const modal = document.getElementById("modal");
+  const warningModal = document.getElementById("warning-modal");
+
 
   openModal.addEventListener("click", () => {
     modal.classList.remove("hidden");
@@ -12,6 +14,8 @@ export default (() => {
     const element = closeModal[index];
     element.addEventListener("click", () => {
       modal.classList.add("hidden");
+      warningModal.classList.add("hidden");
     });
   }
+
 })();

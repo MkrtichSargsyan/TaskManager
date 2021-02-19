@@ -1,4 +1,5 @@
 const goalsContainer = document.getElementById("goals-container");
+const warningModal = document.getElementById("warning-modal");
 
 class Goal {
   constructor(title, category, isDone = false) {
@@ -51,7 +52,7 @@ class Goal {
         </div>
         <div class='flex'>
           <img src="https://img.icons8.com/android/24/000000/edit.png" class='mr-2 cursor-pointer transform hover:scale-110'/>
-          <img src="https://img.icons8.com/ios-filled/24/000000/delete-forever.png" class='cursor-pointer transform hover:scale-110'/>
+          <img src="https://img.icons8.com/ios-filled/24/000000/delete-forever.png" class='cursor-pointer transform hover:scale-110 remove-goal-btn'/>
         </div>
       </footer>
     </article>
@@ -66,6 +67,10 @@ class Goal {
 
       document.getElementById(this.category).innerHTML = `${Goal.goalsAmount[this.category].total}/${Goal.goalsAmount[this.category].done}`;
       document.getElementById('all').innerHTML = `${Goal.goalsAmount['all'].total}/${Goal.goalsAmount['all'].done}`;
+    });
+
+    node.querySelector('.remove-goal-btn').addEventListener('click', (e) => {
+      warningModal.classList.remove("hidden");
     });
   }
 }
