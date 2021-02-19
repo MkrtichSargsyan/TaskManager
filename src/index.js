@@ -28,7 +28,6 @@ goals.push(goal3);
 goals.push(goal4);
 goals.push(goal5);
 
-
 goals.forEach((goal) => {
   showGoal(goal);
 });
@@ -36,6 +35,8 @@ goals.forEach((goal) => {
 sidebarLinks.forEach((link) => {
   link.addEventListener("click", () => {
     goalsContainer.innerHTML = "";
+    sidebarLinks.forEach(link=>link.classList.remove('bg-gray-200'))
+    link.classList.add('bg-gray-200')
 
     let text = link
       .getElementsByTagName("h3")[0]
@@ -57,10 +58,17 @@ const goalForm = {
 };
 
 addGoalBtn.addEventListener("click", () => {
-  const goal = new Goal(goalForm.title.value, goalForm.category.value);
-  goals.push(goal);
-  Goal.goalsAmount[goal.category].total++;
-  Goal.goalsAmount['all'].total++;
-  showGoal(goal);
-  document.getElementById("modal").classList.add("hidden");
+  if (goalForm.title.value === "" || goalForm.category.value === "all") {
+    document
+      .getElementsByClassName("dangerAlert")[0]
+      .classList.remove("hidden");
+  } else {
+    const goal = new Goal(goalForm.title.value, goalForm.category.value);
+    goals.push(goal);
+    Goal.goalsAmount[goal.category].total++;
+    Goal.goalsAmount["all"].total++;
+    showGoal(goal);
+    document.getElementsByClassName("dangerAlert")[0].classList.add("hidden");
+    document.getElementById("modal").classList.add("hidden");
+  }
 });
