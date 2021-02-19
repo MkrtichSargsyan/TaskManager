@@ -1,9 +1,10 @@
 const goalsContainer = document.getElementById("goals-container");
 
 class Goal {
-  constructor(title, category) {
+  constructor(title, category, isDone = false) {
     this.title = title;
     this.category = category;
+    this.isDone = isDone;
   }
   static goalsAmount = {
     all: {
@@ -27,6 +28,7 @@ class Goal {
   create() {
     let node = document.createElement("div");
     node.className = "mb-8 px-1 w-full md:w-1/2 lg:px-4 lg:w-1/3";
+    const isDone = this.isDone ? 'checked' : '';
     let html = `
     <article class="bg-gray-200 overflow-hidden rounded-lg shadow-lg">
       <a href="#">
@@ -44,7 +46,7 @@ class Goal {
       </header>
       <footer class="flex items-center justify-between leading-none p-2 md:p-4">
         <div class='flex items-center'>
-          <input type="checkbox" id="done" name="done" class='w-4 h-4 mr-2 cursor-pointer' value="Done">
+          <input type="checkbox" name="done" class='w-4 h-4 mr-2 cursor-pointer done' value="Done" ${isDone}>
           <label for="done" class='cursor-pointer'>Done</label><br>
         </div>
         <div class='flex'>
@@ -56,6 +58,10 @@ class Goal {
   `;
     node.innerHTML = html;
     goalsContainer.appendChild(node);
+    node.querySelector('.done').addEventListener('change', (e) => {
+      this.isDone = e.target.checked
+      console.log(this);
+    });
   }
 }
 

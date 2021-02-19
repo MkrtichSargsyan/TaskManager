@@ -18,8 +18,8 @@ const goalsContainer = document.getElementById("goals-container");
 // -------------------------
 let goals = [];
 
-const goal2 = new Goal("Goal 2", "today");
-const goal3 = new Goal("Goal 3", "week");
+const goal2 = new Goal("Goal 2", "today", true);
+const goal3 = new Goal("Goal 3", "week", true);
 const goal4 = new Goal("Goal 4", "year");
 const goal5 = new Goal("Goal 5", "year");
 
