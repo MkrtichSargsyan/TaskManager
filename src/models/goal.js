@@ -24,7 +24,6 @@ class Goal {
     },
   };
 
-
   create() {
     let node = document.createElement("div");
     node.className = "mb-8 px-1 w-full md:w-1/2 lg:px-4 lg:w-1/3";
@@ -40,7 +39,7 @@ class Goal {
           </a>
         </h1>
         <p class="text-grey-darker text-sm ml-2">
-          ${new Date().toJSON().slice(0,10).replace(/-/g,'/')}
+          ${new Date().toJSON().slice(0, 10).replace(/-/g, "/")}
         </p>
       </header>
       <footer class="flex items-center justify-between leading-none p-2 md:p-4">
@@ -58,28 +57,6 @@ class Goal {
     node.innerHTML = html;
     this.constructor.goalsAmount[this.category].total++;
     goalsContainer.appendChild(node);
-  }
-
-  static generateGoals() {
-    let goals = [];
-
-    const goal1 = new Goal("Goal 1", "all");
-
-    const goal2 = new Goal("Goal 2", "today");
-
-    const goal3 = new Goal("Goal 3", "week");
-
-    const goal4 = new Goal("Goal 4", "year");
-
-    const goal5 = new Goal("Goal 5", "year");
-
-    goals.push(goal1);
-    goals.push(goal2);
-    goals.push(goal3);
-    goals.push(goal4);
-    goals.push(goal5);
-
-    return goals;
   }
 }
 
