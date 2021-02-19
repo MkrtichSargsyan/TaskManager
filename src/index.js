@@ -7,6 +7,23 @@ import generateDefault from "./generateDefault";
 generateImages;
 generateDefault;
 
+// document.onreadystatechange = function () {
+//   var state = document.readyState
+//   if (state == 'interactive') {
+//        document.getElementById('contents').style.visibility="hidden";
+//        document.getElementById('loading').style.visibility="visible";
+
+//   } else if (state == 'complete') {
+//     document.getElementById('loading').style.visibility="hidden";
+//       setTimeout(function(){
+//          document.getElementById('interactive');
+//          document.getElementById('load').style.visibility="hidden";
+//          document.getElementById('contents').style.visibility="visible";
+//       },1000);
+//   }
+// }
+
+
 const openModal = document.getElementById("open-modal-btn");
 const closeModal = document.getElementsByClassName("close-modal");
 const addGoalBtn = document.getElementById("add-goal-btn");

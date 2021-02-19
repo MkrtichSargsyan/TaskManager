@@ -39,18 +39,18 @@ class Goal {
             ${this.title}
           </a>
         </h1>
-        <p class="text-grey-darker text-sm">
-          ${this.category}
+        <p class="text-grey-darker text-sm ml-2">
+          ${new Date().toJSON().slice(0,10).replace(/-/g,'/')}
         </p>
       </header>
       <footer class="flex items-center justify-between leading-none p-2 md:p-4">
-        <div>
-          <input type="checkbox" id="done" name="done" value="Done">
-          <label for="vehicle1">Done</label><br>
+        <div class='flex items-center'>
+          <input type="checkbox" id="done" name="done" class='w-4 h-4 mr-2 cursor-pointer' value="Done">
+          <label for="done" class='cursor-pointer'>Done</label><br>
         </div>
         <div class='flex'>
-          <img src="https://img.icons8.com/android/24/000000/edit.png" class='mr-2'/>
-          <img src="https://img.icons8.com/ios-filled/24/000000/delete-forever.png"/>
+          <img src="https://img.icons8.com/android/24/000000/edit.png" class='mr-2 cursor-pointer transform hover:scale-110'/>
+          <img src="https://img.icons8.com/ios-filled/24/000000/delete-forever.png" class='cursor-pointer transform hover:scale-110'/>
         </div>
       </footer>
     </article>
