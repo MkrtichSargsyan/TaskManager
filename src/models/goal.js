@@ -9,7 +9,7 @@ class Goal {
   static goalsAmount = {
     all: {
       total: 4,
-      done: 0,
+      done: 2,
     },
     year: {
       total: 2,
@@ -17,11 +17,11 @@ class Goal {
     },
     week: {
       total: 1,
-      done: 0,
+      done: 1,
     },
     today: {
       total: 1,
-      done: 0,
+      done: 1,
     },
   };
 
@@ -60,7 +60,12 @@ class Goal {
     goalsContainer.appendChild(node);
     node.querySelector('.done').addEventListener('change', (e) => {
       this.isDone = e.target.checked
-      console.log(this);
+
+      this.isDone ? Goal.goalsAmount['all'].done++ : Goal.goalsAmount['all'].done--;
+      this.isDone ? Goal.goalsAmount[this.category].done++ : Goal.goalsAmount[this.category].done--;
+
+      document.getElementById(this.category).innerHTML = `${Goal.goalsAmount[this.category].total}/${Goal.goalsAmount[this.category].done}`;
+      document.getElementById('all').innerHTML = `${Goal.goalsAmount['all'].total}/${Goal.goalsAmount['all'].done}`;
     });
   }
 }
