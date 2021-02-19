@@ -7,19 +7,19 @@ class Goal {
   }
   static goalsAmount = {
     all: {
-      total: 0,
+      total: 4,
       done: 0,
     },
     year: {
-      total: 0,
+      total: 2,
       done: 0,
     },
     week: {
-      total: 0,
+      total: 1,
       done: 0,
     },
     today: {
-      total: 0,
+      total: 1,
       done: 0,
     },
   };
@@ -55,7 +55,6 @@ class Goal {
     </article>
   `;
     node.innerHTML = html;
-    this.constructor.goalsAmount[this.category].total++;
     goalsContainer.appendChild(node);
   }
 }
