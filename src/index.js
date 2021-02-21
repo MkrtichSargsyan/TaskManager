@@ -2,9 +2,11 @@ import "../node_modules/normalize.css";
 import "./css/style.css";
 import "./css/customStyles.css";
 import generateImages from "./generateImages";
+import Goals from "./models/goalsManager";
 import Goal from "./models/goal";
 import showGoal from "./showGoal";
 import modal from "./modal";
+import GoalsManager from "./models/goalsManager";
 
 generateImages;
 modal;
@@ -29,27 +31,32 @@ goals.push(goal3);
 goals.push(goal4);
 goals.push(goal5);
 
-goals.forEach((goal) => {
-  showGoal(goal);
-});
+let goalsManager = new GoalsManager(goals);
+console.log(goalsManager);
+goalsManager.render();
 
-sidebarLinks.forEach((link) => {
-  link.addEventListener("click", () => {
-    goalsContainer.innerHTML = "";
-    sidebarLinks.forEach(link=>link.classList.remove('bg-gray-200'))
-    link.classList.add('bg-gray-200')
+// goals.forEach((goal) => {
+//   showGoal(goal);
+// });
 
-    let text = link
-      .getElementsByTagName("h3")[0]
-      .innerHTML.split(" ")[0]
-      .toLowerCase();
-    let filteredGoals =
-      text === "all" ? goals : goals.filter((goal) => goal.category === text);
-    filteredGoals.forEach((goal) => {
-      showGoal(goal);
-    });
-  });
-});
+// sidebarLinks.forEach((link) => {
+//   console.log(sidebarLinks);
+//   link.addEventListener("click", () => {
+//     goalsContainer.innerHTML = "";
+//     sidebarLinks.forEach(link=>link.classList.remove('bg-gray-200'))
+//     link.classList.add('bg-gray-200')
+
+//     let text = link
+//       .getElementsByTagName("h3")[0]
+//       .innerHTML.split(" ")[0]
+//       .toLowerCase();
+//     let filteredGoals =
+//       text === "all" ? goals : goals.filter((goal) => goal.category === text);
+//     filteredGoals.forEach((goal) => {
+//       showGoal(goal);
+//     });
+//   });
+// });
 
 // --------------------------------
 

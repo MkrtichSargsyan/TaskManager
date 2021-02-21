@@ -1,5 +1,5 @@
-const goalsContainer = document.getElementById("goals-container");
 const warningModal = document.getElementById("warning-modal");
+
 
 class Goal {
   constructor(title, category, isDone = false) {
@@ -7,26 +7,26 @@ class Goal {
     this.category = category;
     this.isDone = isDone;
   }
-  static goalsAmount = {
-    all: {
-      total: 4,
-      done: 2,
-    },
-    year: {
-      total: 2,
-      done: 0,
-    },
-    week: {
-      total: 1,
-      done: 1,
-    },
-    today: {
-      total: 1,
-      done: 1,
-    },
-  };
+  // static goalsAmount = {
+  //   all: {
+  //     total: 4,
+  //     done: 2,
+  //   },
+  //   year: {
+  //     total: 2,
+  //     done: 0,
+  //   },
+  //   week: {
+  //     total: 1,
+  //     done: 1,
+  //   },
+  //   today: {
+  //     total: 1,
+  //     done: 1,
+  //   },
+  // };
 
-  create() {
+  render(container) {
     let node = document.createElement("div");
     node.className = "mb-8 px-1 w-full md:w-1/2 lg:px-4 lg:w-1/3";
     const isDone = this.isDone ? 'checked' : '';
@@ -58,7 +58,7 @@ class Goal {
     </article>
   `;
     node.innerHTML = html;
-    goalsContainer.appendChild(node);
+    container.appendChild(node);
     node.querySelector('.done').addEventListener('change', (e) => {
       this.isDone = e.target.checked
 
