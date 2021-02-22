@@ -2,21 +2,19 @@ import "../node_modules/normalize.css";
 import "./css/style.css";
 import "./css/customStyles.css";
 import generateImages from "./generateImages";
-import Goals from "./models/goalsManager";
+import GoalsManager from "./models/goalsManager";
 import Goal from "./models/goal";
 import showGoal from "./showGoal";
 import modal from "./modal";
-import GoalsManager from "./models/goalsManager";
+
 
 generateImages;
 modal;
 
+const goalsContainer = document.getElementById("goals-container");
+const goalsInfo = document.getElementById("goals-info");
 const addGoalBtn = document.getElementById("add-goal-btn");
 const removeGoalBtn = document.getElementById("remove-goal-btn");
-const sidebarLinks = Array.from(
-  document.getElementById("sidebar-links").getElementsByTagName("li")
-);
-const goalsContainer = document.getElementById("goals-container");
 
 // -------------------------
 let goals = [];
@@ -33,8 +31,6 @@ goals.push(goal5);
 
 let goalsManager = new GoalsManager(goals, goalsContainer);
 goalsManager.render();
-console.log(goalsManager);
-
 // goals.forEach((goal) => {
 //   showGoal(goal);
 // });
@@ -71,11 +67,7 @@ addGoalBtn.addEventListener("click", () => {
       .getElementsByClassName("dangerAlert")[0]
       .classList.remove("hidden");
   } else {
-    const goal = new Goal(goalForm.title.value, goalForm.category.value);
-    goals.push(goal);
-    Goal.goalsAmount[goal.category].total++;
-    Goal.goalsAmount["all"].total++;
-    showGoal(goal);
+    goalsManager.addGoal(goalForm.title.value, goalForm.category.value);
     document.getElementsByClassName("dangerAlert")[0].classList.add("hidden");
     document.getElementById("modal").classList.add("hidden");
   }
