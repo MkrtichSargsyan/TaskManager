@@ -44,8 +44,8 @@ class GoalsManager {
     }
   }
 
-  renderInfo(element){
-    console.log(element);
+  renderInfo(){
+    const allGoals = document.getElementById
   }
 
   render(){
