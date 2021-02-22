@@ -110,3 +110,13 @@ aside li:hover {
 		transform: rotate(360deg);
 	}
 }
+
+/* task page */
+
+.hover-trigger .hover-target {
+  display: none;
+}
+
+.hover-trigger:hover .hover-target {
+  display: flex;
+}

@@ -1,3 +1,3 @@
 export default ()=>{
-  return console.log('dfdfdffdfdf');
+  return console.log('goal page work');
 }
