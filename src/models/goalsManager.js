@@ -1,56 +1,59 @@
-const goalsContainer = document.getElementById("goals-container");
+
 const warningModal = document.getElementById("warning-modal");
 
 import "./goal";
 
 class GoalsManager {
-  constructor(goals){
-    this.goals = {
-      all: goals,
-      done: [],
-      today: {
-        all: [],
-        done: [],
-      },
-      week: {
-        all: [],
-        done: [],
-      },
-      year: {
-        all: [],
-        done: [],
+  constructor(goals, container = document.body){
+    this.container = container;
+    this.goals = goals,
+    this.info = {
+      size: {
+        done: {
+          all: 0,
+          today: 0,
+          week: 0,
+          year: 0
+        },
+        total: {
+          all: goals.length,
+          today: 0,
+          week: 0,
+          year: 0,
+        }
       }
     }
+
     goals.forEach(goal => {
-      if(goal.isDone) this.goals.done.push(goal);
-      switch (goal.category) {
-        case "today":
-          this.goals.today.all.push(goal);
-          if (goal.isDone) this.goals.today.done.push(goal) 
-          break;
-        case "week":
-          this.goals.week.all.push(goal);
-          if (goal.isDone) this.goals.week.done.push(goal) 
-          break;
-        case "year":
-          this.goals.year.all.push(goal);
-          if (goal.isDone) this.goals.year.done.push(goal) 
-          break;
-      
-        default:
-          break;
-      }
+      console.log(goal);
+      if(goal.isDone) this.info.size.done.all += 1;
+      this.info.size.total[goal.category] += 1;
     });
   }
 
-  render(category = "all"){
-    let goals = this.goals[category];
+  getByCategory(category) {
+    let goals = this.goals.all;
+    return goals.filter((goal) => goal.category === category);
+  }
+
+  renderGoals(category = "all"){
+    let goals = this.goals;
     for (let index = 0; index < goals.length; index++) {
       const goal = goals[index];
-      goal.render(goalsContainer);
-      
+      goal.render(this.container);
     }
   }
+
+  renderInfo(element){
+    console.log(element);
+  }
+
+  render(){
+    this.renderGoals();
+    this.renderInfo();
+  }
+  
+
 }
 
 

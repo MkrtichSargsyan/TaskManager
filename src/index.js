@@ -31,9 +31,9 @@ goals.push(goal3);
 goals.push(goal4);
 goals.push(goal5);
 
-let goalsManager = new GoalsManager(goals);
-console.log(goalsManager);
+let goalsManager = new GoalsManager(goals, goalsContainer);
 goalsManager.render();
+console.log(goalsManager);
 
 // goals.forEach((goal) => {
 //   showGoal(goal);
