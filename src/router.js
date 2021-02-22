@@ -1,47 +1,29 @@
-// class Router {
-//   constructor(routes) {
-//     this.routes = routes;
-//   }
+import goalpage from "./pages/goalpage/goalpage";
+import homepage from "./pages/homepage/homepage";
 
-//   renderPage(path, content) {
-//     const defaultView = this.routes.find((route) => route.name === 'home').view;
-//     let view = '';
-//     switch (path) {
-//       case '':
-//         view = defaultView;
-//         break;
-//       case '#menu':
-//         view = this.routes.find((route) => route.name === 'menu').view;
-//         break;
-//       case '#contact':
-//         view = this.routes.find((route) => route.name === 'contact').view;
-//         break;
+const homepageContent = document.getElementById("homepage-content");
+const goalspageContent = document.getElementById("goalpage-content");
 
-//       default:
-//         view = defaultView;
-//     }
-//     view(content);
-//   }
-// }
+class Router {
+  renderPage(path) {
+    switch (path) {
+      case "":
+        homepage();
+        homepageContent.classList.remove("hidden");
+        goalspageContent.classList.add("hidden");
+        break;
+      case "#goal":
+        goalpage();
+        homepageContent.classList.add("hidden");
+        goalspageContent.classList.remove("hidden");
+        break;
+      default:
+        homepageContent.classList.remove("hidden");
+        goalspageContent.classList.add("hidden");
+    }
+  }
+}
 
-// const routes = [
-//   {
-//     path: '/',
-//     name: 'home',
-//     view: home,
-//   },
-//   {
-//     path: '#menu',
-//     name: 'menu',
-//     view: menu,
-//   },
-//   {
-//     path: '#contact',
-//     name: 'contact',
-//     view: contact,
-//   },
-// ];
+const router = new Router();
 
-// const router = new Router(routes);
-
-// export default router;
+export default router;

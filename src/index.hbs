@@ -12,7 +12,14 @@
 
 <body>
   {{> partials/header}}
-  {{> pages/homepage/index }}
+  <main class="bg-gray-50 min-h-screen flex flex-row">
+    <div id='homepage-content'>
+      {{> pages/homepage/index }}
+    </div>
+    <div id='goalpage-content'>
+      {{> pages/goalpage/index }}
+    </div>
+  </main>
   {{> partials/footer}}
 </body>
 
