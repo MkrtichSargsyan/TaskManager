@@ -4,11 +4,11 @@
       <div class="flex justify-between py-1">
         <h3 class="text-sm">Project name</h3>
       </div>
-      <div class="text-sm mt-2">
+      <div class="droppable dropzone text-sm mt-2">
 
-        <div
-          class="bg-white hover-trigger p-2 rounded mt-1 border-b border-grey cursor-pointer hover:bg-grey-lighter flex justify-between">
-            <p>Do 100 push ups</p>
+        <div id="draggable" draggable="true" ondragstart="event.dataTransfer.setData('text/plain',null)"
+          class="draggable bg-white hover-trigger p-2 rounded mt-1 border-b border-grey cursor-pointer hover:bg-grey-lighter flex justify-between">
+          <p>Do 100 push ups</p>
           <div id='icon' class='hover-target justify-between'>
             <img class='mr-2 transition duration-500 ease-in-out hover:bg-gray-100 transform  hover:scale-150'
               src="https://img.icons8.com/dotty/16/000000/edit.png" />
@@ -17,10 +17,10 @@
           </div>
         </div>
 
-        <div class='my-2'>
-          <p class="mt-4 text-gray-400 w-max ml-4 hover:text-gray-800 cursor-pointer">+ Add a step...</p>
-        </div>
+      </div>
 
+      <div class='my-2 mt-4'>
+        <p class="mt-4 text-gray-400 w-max ml-4 hover:text-gray-800 cursor-pointer">+ Add a step...</p>
       </div>
     </div>
   </div>
@@ -31,20 +31,20 @@
       <div class="flex justify-between py-1">
         <h3 class="text-sm">Doing</h3>
       </div>
-      <div class="text-sm mt-2">
-        {{!-- add here --}}
+      <div class="droppable dropzone text-sm my-2 h-24">
+
+
 
       </div>
     </div>
   </div>
 
-   <div class="w-full p-8 font-sans">
+  <div class="w-full p-8 font-sans">
     <div class="rounded bg-gray-300 w-64 p-2">
       <div class="flex justify-between py-1">
         <h3 class="text-sm">Done</h3>
       </div>
-      <div class="text-sm mt-2">
-        {{!-- add here --}}
+      <div class="droppable dropzone text-sm my-2 h-24">
 
       </div>
     </div>
