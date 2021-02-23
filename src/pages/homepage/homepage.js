@@ -12,6 +12,7 @@ export default () => {
     document.getElementById("sidebar-links").getElementsByTagName("li")
   );
   const goalsContainer = document.getElementById("goals-container");
+  const warningModal = document.getElementById("warning-modal");
 
   // -------------------------
 
@@ -44,7 +45,7 @@ export default () => {
         .getElementsByTagName("h3")[0]
         .innerHTML.split(" ")[0]
         .toLowerCase();
-        
+
       goalsManager.renderGoals(text);
       // let filteredGoals =
       //   text === "all" ? goals : goals.filter((goal) => goal.category === text);
@@ -72,4 +73,9 @@ export default () => {
       document.getElementById("modal").classList.add("hidden");
     }
   });
+
+  removeGoalBtn.addEventListener("click", () => {
+    goalsManager.removeGoal()
+    warningModal.classList.add("hidden");
+  })
 };

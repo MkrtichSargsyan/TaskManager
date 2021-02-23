@@ -101,6 +101,7 @@ class GoalsManager {
 
         removeGoalBtn.dataset.index = index;
         removeGoalBtn.addEventListener('click', (e) => {
+          console.log("remove");
           this.selected = {
             goal: this.goals[index],
             index: index
