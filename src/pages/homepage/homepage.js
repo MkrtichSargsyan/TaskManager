@@ -37,16 +37,16 @@ export default () => {
 
   sidebarLinks.forEach((link) => {
     link.addEventListener("click", () => {
-      goalsContainer.innerHTML = "";
+      // goalsContainer.innerHTML = "";
       sidebarLinks.forEach((link) => link.classList.remove("bg-gray-200"));
       link.classList.add("bg-gray-200");
 
-      let text = link
+      let category = link
         .getElementsByTagName("h3")[0]
         .innerHTML.split(" ")[0]
         .toLowerCase();
 
-      goalsManager.renderGoals(text);
+      goalsManager.showByCategory(category);
       // let filteredGoals =
       //   text === "all" ? goals : goals.filter((goal) => goal.category === text);
       // filteredGoals.forEach((goal) => {

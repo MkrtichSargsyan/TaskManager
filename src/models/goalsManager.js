@@ -64,6 +64,8 @@ class GoalsManager {
     if(this.selected.goal.isDone) this.info.goals.done[this.selected.goal.category] -= 1;
     delete this.selected;
     this.updateInfo();
+    sidebarLinks.forEach((link) => link.classList.remove("bg-gray-200"));
+    this.info.container.all.parentNode.classList.add("bg-gray-200");
     
   }
 
@@ -75,10 +77,21 @@ class GoalsManager {
   renderGoals(category = "all"){
     this.container.innerHTML = "";
     let goals = this.goals;
-    if(category !== "all") goals = this.getByCategory(category);
     for (let index = 0; index < goals.length; index++) {
       const goal = goals[index];
       this.renderGoal(goal, index);
+    }
+  }
+
+  showByCategory(category){
+    for (let index = 0; index < this.goals.length; index++) {
+      const goal = this.goals[index];
+      const id = "goal-manager-item-" + index;
+      if(category !== "all" && goal.category !== category){
+        document.getElementById(id).classList.add("hidden");
+      } else {
+        document.getElementById(id).classList.remove("hidden");
+      }
     }
   }
 
