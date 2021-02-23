@@ -1,6 +1,7 @@
 import Goal from "../../models/goal";
 import showGoal from "../../showGoal";
 import modal from "../../modal";
+import GoalsManager from "../../models/goalsManager"
 
 export default () => {
   modal;
@@ -26,9 +27,12 @@ export default () => {
   goals.push(goal4);
   goals.push(goal5);
 
-  goals.forEach((goal) => {
-    showGoal(goal);
-  });
+  let goalsManager = new GoalsManager(goals, goalsContainer);
+  goalsManager.render();
+
+  // goals.forEach((goal) => {
+  //   showGoal(goal);
+  // });
 
   sidebarLinks.forEach((link) => {
     link.addEventListener("click", () => {
@@ -40,11 +44,13 @@ export default () => {
         .getElementsByTagName("h3")[0]
         .innerHTML.split(" ")[0]
         .toLowerCase();
-      let filteredGoals =
-        text === "all" ? goals : goals.filter((goal) => goal.category === text);
-      filteredGoals.forEach((goal) => {
-        showGoal(goal);
-      });
+        
+      goalsManager.renderGoals(text);
+      // let filteredGoals =
+      //   text === "all" ? goals : goals.filter((goal) => goal.category === text);
+      // filteredGoals.forEach((goal) => {
+      //   showGoal(goal);
+      // });
     });
   });
 
@@ -61,11 +67,7 @@ export default () => {
         .getElementsByClassName("dangerAlert")[0]
         .classList.remove("hidden");
     } else {
-      const goal = new Goal(goalForm.title.value, goalForm.category.value);
-      goals.push(goal);
-      Goal.goalsAmount[goal.category].total++;
-      Goal.goalsAmount["all"].total++;
-      showGoal(goal);
+      goalsManager.addGoal(goalForm.title.value, goalForm.category.value);
       document.getElementsByClassName("dangerAlert")[0].classList.add("hidden");
       document.getElementById("modal").classList.add("hidden");
     }
