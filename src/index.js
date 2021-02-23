@@ -15,6 +15,7 @@ const goalsContainer = document.getElementById("goals-container");
 const goalsInfo = document.getElementById("goals-info");
 const addGoalBtn = document.getElementById("add-goal-btn");
 const removeGoalBtn = document.getElementById("remove-goal-btn");
+const warningModal = document.getElementById("warning-modal");
 
 // -------------------------
 let goals = [];
@@ -31,6 +32,7 @@ goals.push(goal5);
 
 let goalsManager = new GoalsManager(goals, goalsContainer);
 goalsManager.render();
+console.log(goalsManager);
 // goals.forEach((goal) => {
 //   showGoal(goal);
 // });
@@ -72,5 +74,10 @@ addGoalBtn.addEventListener("click", () => {
     document.getElementById("modal").classList.add("hidden");
   }
 });
+
+removeGoalBtn.addEventListener("click", () => {
+  goalsManager.removeGoal()
+  warningModal.classList.add("hidden");
+})
 
 

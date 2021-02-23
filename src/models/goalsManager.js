@@ -1,7 +1,4 @@
-
-const warningModal = document.getElementById("warning-modal");
 import "./goal";
-import Goal from "./goal";
 
 class GoalsManager {
   constructor(goals, container = document.body){
@@ -13,6 +10,7 @@ class GoalsManager {
         today: document.getElementById("goals-today"),
         week: document.getElementById("goals-week"),
         year: document.getElementById("goals-year"),
+        warningModal: document.getElementById("warning-modal"),
       },
       goals: {
         done: {
@@ -27,15 +25,12 @@ class GoalsManager {
           week: 0,
           year: 0,
         }
-      }
-    }
-    this.buttons = {
-      addGoal: document.getElementById("add-goal-btn"),
-      removeGoal: document.getElementById("remove-goal-btn")
+      },
     }
 
     goals.forEach(goal => {
       if(goal.isDone) this.info.goals.done.all += 1;
+      if(goal.isDone) this.info.goals.done[goal.category] += 1;
       this.info.goals.total[goal.category] += 1;
     });
   }
@@ -54,12 +49,27 @@ class GoalsManager {
     this.updateInfo();
   }
 
+  removeGoal(){
+    const index = this.selected.index
+    this.goals.splice(index, 1);
+    this.renderGoals();
+    // document.getElementById("goal-manager-item-" + index).remove();
+    this.info.goals.total.all -= 1;
+    this.info.goals.total[this.selected.goal.category] -= 1;
+    if(this.selected.goal.isDone) this.info.goals.done.all -= 1;
+    if(this.selected.goal.isDone) this.info.goals.done[this.selected.goal.category] -= 1;
+    delete this.selected;
+    this.updateInfo();
+    
+  }
+
   setGoalIsDone(goal, isDone){
     goal.isDone = isDone;
 
   }
 
   renderGoals(category = "all"){
+    this.container.innerHTML = "";
     let goals = this.goals;
     for (let index = 0; index < goals.length; index++) {
       const goal = goals[index];
@@ -81,16 +91,16 @@ class GoalsManager {
           isDone ? this.info.goals.done.all += 1 : this.info.goals.done.all -= 1;
           isDone ? this.info.goals.done[goal.category] += 1 : this.info.goals.done[goal.category] -= 1;
           this.updateInfo();
+          console.log(this);
         });
-
-        
 
         removeGoalBtn.dataset.index = index;
         removeGoalBtn.addEventListener('click', (e) => {
-          this.selected = this.goals[index];
-
-          console.log(this);
-          warningModal.classList.remove("hidden");
+          this.selected = {
+            goal: this.goals[index],
+            index: index
+          }
+          this.info.container.warningModal.classList.remove("hidden");
         });
       }
     );

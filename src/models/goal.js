@@ -1,30 +1,9 @@
-const warningModal = document.getElementById("warning-modal");
-
-
 class Goal {
   constructor(title, category, isDone = false) {
     this.title = title;
     this.category = category;
     this.isDone = isDone;
   }
-  // static goalsAmount = {
-  //   all: {
-  //     total: 4,
-  //     done: 2,
-  //   },
-  //   year: {
-  //     total: 2,
-  //     done: 0,
-  //   },
-  //   week: {
-  //     total: 1,
-  //     done: 1,
-  //   },
-  //   today: {
-  //     total: 1,
-  //     done: 1,
-  //   },
-  // };
 
   render(container) {
     return new Promise((resolve) => {
