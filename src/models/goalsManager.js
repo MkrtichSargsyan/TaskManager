@@ -101,6 +101,8 @@ class GoalsManager {
         node.id = "goal-manager-item-" + index;
         const removeGoalBtn = node.querySelector('.remove-goal-btn');
         const isDoneInput = node.querySelector('.goal-is-done-checkbox');
+        const selectGoal = node.querySelector('.select-goal');
+        const selectGoalLink = node.querySelector('.select-goal-link');
         
         removeGoalBtn.dataset.index = index;
         isDoneInput.addEventListener('change', (e) => {
@@ -121,9 +123,22 @@ class GoalsManager {
           }
           this.info.container.warningModal.classList.remove("hidden");
         });
+
+        selectGoal.addEventListener("click", (e) => {
+          this.selectGoal(goal, index);
+        });
+        selectGoalLink.addEventListener("click", (e) => {
+          this.selectGoal(goal, index);
+        });
+
       }
     );
 
+  }
+
+  selectGoal(goal, index){
+    console.log("I'm in goal: ");
+    console.log(goal);
   }
 
   updateInfo(){
