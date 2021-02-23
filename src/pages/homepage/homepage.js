@@ -17,8 +17,14 @@ export default () => {
   // -------------------------
 
   let goals = [];
+  let steps = [];
+  const step = {
+    text: "You need to start",
+    status: "Undone"
+  };
+  steps.push(step);
 
-  const goal2 = new Goal("Goal 2", "today", true);
+  const goal2 = new Goal("Goal 2", "today", true, steps);
   const goal3 = new Goal("Goal 3", "week", true);
   const goal4 = new Goal("Goal 4", "year");
   const goal5 = new Goal("Goal 5", "year");

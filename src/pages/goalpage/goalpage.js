@@ -3,6 +3,7 @@ export default () => {
   const droppable = document.getElementsByClassName("droppable");
   let dragged;
 
+  return;
   /* events fired on the draggable target */
   a.addEventListener("drag", function (event) {}, false);
 
