@@ -22,7 +22,12 @@ export default () => {
     text: "You need to start",
     status: "Undone"
   };
+  const step2 = {
+    text: "This is step 2",
+    status: "Undone"
+  }
   steps.push(step);
+  steps.push(step2);
 
   const goal2 = new Goal("Goal 2", "today", true, steps);
   const goal3 = new Goal("Goal 3", "week", true);
