@@ -79,36 +79,34 @@ aside li:hover {
   padding-top: 13px;
   font-size: 18px;
 }
-#ct p i{
+#ct p i {
   color: white;
 }
-
-
 
 /* loader */
 
 .loader {
-	border-top-color: #3498db;
-	-webkit-animation: spinner 1.5s linear infinite;
-	animation: spinner 1.5s linear infinite;
+  border-top-color: #3498db;
+  -webkit-animation: spinner 1.5s linear infinite;
+  animation: spinner 1.5s linear infinite;
 }
 
 @-webkit-keyframes spinner {
-	0% {
-		-webkit-transform: rotate(0deg);
-	}
-	100% {
-		-webkit-transform: rotate(360deg);
-	}
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
 }
 
 @keyframes spinner {
-	0% {
-		transform: rotate(0deg);
-	}
-	100% {
-		transform: rotate(360deg);
-	}
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 /* task page */
@@ -123,10 +121,11 @@ aside li:hover {
 
 /* drag */
 
-.dropzone{
-  min-height: 40px;
+.dropzone {
+  min-height: 80px;
+  padding-bottom: 40px;
 }
 
-.dottedBorder{
+.dottedBorder {
   border: 1px dotted black;
 }

@@ -21,14 +21,24 @@ export default () => {
   let steps = [];
   const step = {
     text: "You need to start",
-    status: "Undone"
+    status: "undone"
   };
   const step2 = {
-    text: "This is step 2",
-    status: "Undone"
+    text: "This is step 2 nad it's doing",
+    status: "doing"
+  }
+  const step3 = {
+    text: "This is step 3 and it's done",
+    status: "done"
+  }
+  const step4 = {
+    text: "This is step 4 and it's done",
+    status: "done"
   }
   steps.push(step);
   steps.push(step2);
+  steps.push(step3);
+  steps.push(step4);
 
   const goal2 = new Goal("Goal 2", "today", true, steps);
   const goal3 = new Goal("Goal 3", "week", true);

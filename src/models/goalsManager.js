@@ -132,6 +132,10 @@ class GoalsManager {
 
   }
 
+  setStepStatus(goalIndex, stepIndex, status){
+    this.goals[goalIndex].steps[stepIndex].status = status;
+  }
+
   renderGoals(category = "all"){
     this.container.innerHTML = "";
     let goals = this.goals;
@@ -195,20 +199,29 @@ class GoalsManager {
   }
 
   selectGoal(goal, index){
-    this.renderSteps(goal, document.getElementById("steps-undone"));
+    this.renderSteps(goal);
   }
 
-  renderSteps(goal, container){
-    container.innerHTML = "";
+  renderSteps(goal){
+    const containers = {
+      undone: document.getElementById("steps-undone"),
+      doing: document.getElementById("steps-doing"),
+      done: document.getElementById("steps-done")
+    };
+
+    for (let index = 0; index < containers.length; index++) {
+      container[index].innerHTML = "";
+    }
     for (let index = 0; index < goal.steps.length; index++) {
       const step = goal.steps[index];
+      const container = containers[step.status];
       let node = document.createElement("div");
       node.setAttribute("draggable", true);
       node.className = "draggable bg-white hover-trigger p-2 rounded mt-1 border-b border-grey cursor-pointer hover:bg-grey-lighter flex justify-between";
       node.id = "step-item-" + index;
       let html = `
           <p>${step.text}</p>
-          <div id='icon' class='hover-target justify-between'>
+          <div class='hover-target justify-between'>
             <img class='mr-2 transition duration-500 ease-in-out hover:bg-gray-100 transform  hover:scale-150'
               src="https://img.icons8.com/dotty/16/000000/edit.png" />
             <img class='transition duration-500 ease-in-out hover:bg-gray-100 transform  hover:scale-150'
