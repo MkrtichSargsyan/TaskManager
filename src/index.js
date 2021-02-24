@@ -7,6 +7,7 @@ generateImages;
 
 
 import router from "./router";
+import GoalsManager from "./models/goalsManager";
 
 router.renderPage(window.location.hash);
 

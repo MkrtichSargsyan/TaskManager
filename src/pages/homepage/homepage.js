@@ -16,6 +16,7 @@ export default () => {
 
   // -------------------------
 
+  /* Testing data */
   let goals = [];
   let steps = [];
   const step = {

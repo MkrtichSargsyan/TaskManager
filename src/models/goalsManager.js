@@ -4,6 +4,7 @@ const sidebarLinks = Array.from(
 );
 
 const a = document.getElementsByClassName("draggable")[0];
+let dragged;
 
 class GoalsManager {
   constructor(goals, container = document.body){
@@ -37,6 +38,61 @@ class GoalsManager {
       if(goal.isDone) this.info.goals.done.all += 1;
       if(goal.isDone) this.info.goals.done[goal.category] += 1;
       this.info.goals.total[goal.category] += 1;
+    });
+
+    const droppable = document.getElementsByClassName("droppable");
+    Array.from(droppable).forEach((dropField) => {
+      /* events fired on the drop targets */
+      dropField.addEventListener(
+        "dragover",
+        function (event) {
+          event.preventDefault();
+        },
+        false
+      );
+  
+      dropField.addEventListener(
+        "dragenter",
+        function (event) {
+          // highlight potential drop target when the draggable element enters it
+          if (event.target.classList.contains("dropzone")) {
+            event.target.classList.add("bg-gray-200");
+          }
+        },
+        false
+      );
+  
+      dropField.addEventListener(
+        "dragleave",
+        function (event) {
+          console.log("leave");
+          // reset background of potential drop target when the draggable element leaves it
+          if (event.target.classList.contains("dropzone")) {
+            event.target.classList.remove("bg-gray-200");
+          }
+        },
+        false
+      );
+  
+      dropField.addEventListener(
+        "drop",
+        function (event) {
+          // prevent default action (open as link for some elements)
+          event.preventDefault();
+  
+          Array.from(droppable).forEach((dropField)=>{
+            dropField.classList.remove('bg-white')
+            dropField.classList.remove('dottedBorder')
+          })
+          // move dragged elem to the selected drop target
+          if (event.target.classList.contains("dropzone")) {
+            event.target.classList.remove("bg-gray-200");
+            dragged.parentNode.removeChild(dragged);
+            event.target.appendChild(dragged);
+          }
+        },
+        false
+      );
     });
   }
 
@@ -147,11 +203,10 @@ class GoalsManager {
     for (let index = 0; index < goal.steps.length; index++) {
       const step = goal.steps[index];
       let node = document.createElement("div");
-
-    console.log(goal);
-    let html = `
-    <div draggable="true"
-          class="draggable bg-white hover-trigger p-2 rounded mt-1 border-b border-grey cursor-pointer hover:bg-grey-lighter flex justify-between">
+      node.setAttribute("draggable", true);
+      node.className = "draggable bg-white hover-trigger p-2 rounded mt-1 border-b border-grey cursor-pointer hover:bg-grey-lighter flex justify-between";
+      node.id = "step-item-" + index;
+      let html = `
           <p>${step.text}</p>
           <div id='icon' class='hover-target justify-between'>
             <img class='mr-2 transition duration-500 ease-in-out hover:bg-gray-100 transform  hover:scale-150'
@@ -159,17 +214,14 @@ class GoalsManager {
             <img class='transition duration-500 ease-in-out hover:bg-gray-100 transform  hover:scale-150'
               src="https://img.icons8.com/dotty/16/000000/trash.png" />
           </div>
-        </div>
-    `;
-    node.innerHTML = html;
-    container.appendChild(node);
-    const draggable = node.querySelector('.draggable');
-    const droppable = document.getElementsByClassName("droppable");
-    let dragged;
+      `;
+      node.innerHTML = html;
+      container.appendChild(node);
+      const droppable = document.getElementsByClassName("droppable");
 
 
     // event.dataTransfer.setData('text/plain',null)
-    draggable.addEventListener(
+    node.addEventListener(
       "dragstart",
       function (event) {
         Array.from(droppable).forEach((dropField)=>{
@@ -184,7 +236,7 @@ class GoalsManager {
       false
     );
 
-    draggable.addEventListener(
+    node.addEventListener(
       "dragend",
       function (event) {
 
@@ -197,63 +249,13 @@ class GoalsManager {
       },
       false
     );
+
+
       
     }
     
 
-    Array.from(droppable).forEach((dropField) => {
-      /* events fired on the drop targets */
-      dropField.addEventListener(
-        "dragover",
-        function (event) {
-          event.preventDefault();
-        },
-        false
-      );
-  
-      dropField.addEventListener(
-        "dragenter",
-        function (event) {
-          // highlight potential drop target when the draggable element enters it
-          if (event.target.classList.contains("dropzone")) {
-            event.target.classList.add("bg-gray-200");
-          }
-        },
-        false
-      );
-  
-      dropField.addEventListener(
-        "dragleave",
-        function (event) {
-          console.log("leave");
-          // reset background of potential drop target when the draggable element leaves it
-          if (event.target.classList.contains("dropzone")) {
-            event.target.classList.remove("bg-gray-200");
-          }
-        },
-        false
-      );
-  
-      dropField.addEventListener(
-        "drop",
-        function (event) {
-          // prevent default action (open as link for some elements)
-          event.preventDefault();
-  
-          Array.from(droppable).forEach((dropField)=>{
-            dropField.classList.remove('bg-white')
-            dropField.classList.remove('dottedBorder')
-          })
-          // move dragged elem to the selected drop target
-          if (event.target.classList.contains("dropzone")) {
-            event.target.classList.remove("bg-gray-200");
-            dragged.parentNode.removeChild(dragged);
-            event.target.appendChild(dragged);
-          }
-        },
-        false
-      );
-    });
+
     
   }
 

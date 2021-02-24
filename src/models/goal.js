@@ -1,5 +1,5 @@
 class Goal {
-  constructor(title, category, isDone = false, steps = {}) {
+  constructor(title, category, isDone = false, steps = []) {
     this.title = title;
     this.category = category;
     this.isDone = isDone;
