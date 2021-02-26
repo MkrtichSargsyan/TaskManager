@@ -2,44 +2,7 @@ export default () => {
   // const a = document.getElementsByClassName("draggable")[0];
   const droppable = document.getElementsByClassName("droppable");
   let dragged;
-  const addStepBtn = document.getElementById("add-step-btn");
-  const containers = {
-    undone: document.getElementById("steps-undone"),
-    doing: document.getElementById("steps-doing"),
-    done: document.getElementById("steps-done")
-  };
 
-  addStepBtn.addEventListener("click", () => {
-    if(document.getElementById("step-item-new")){
-      console.log("you are already adding an step");
-      return;
-    }
-    let node = document.createElement("div");
-      node.setAttribute("draggable", true);
-      node.className = "draggable bg-white hover-trigger p-2 rounded mt-1 border-b border-grey cursor-pointer hover:bg-grey-lighter flex justify-between";
-      node.id = "step-item-new";
-    let html = `
-      <input type="text" placeholder="step title">
-      <div class='hover-target justify-between'>
-        <img class='add-btn mr-2 transition duration-500 ease-in-out hover:bg-gray-100 transform  hover:scale-150'
-          src="https://img.icons8.com/dotty/16/000000/add.png" />
-        <img class='cancel-btn transition duration-500 ease-in-out hover:bg-gray-100 transform  hover:scale-150'
-          src="https://img.icons8.com/dotty/16/000000/trash.png" />
-        </div>
-      </div>`;
-    node.innerHTML = html;
-    containers.undone.appendChild(node);
-    const addBtn = node.querySelector('.add-btn');
-    const cancelBtn = node.querySelector('.cancel-btn');
-    addBtn.addEventListener("click", () => {
-      console.log("Please add this to steps of goal");
-    });
-    cancelBtn.addEventListener("click", () => {
-      node.remove();
-    });
-
-
-  });
 
 
 

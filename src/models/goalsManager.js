@@ -65,7 +65,6 @@ class GoalsManager {
       dropField.addEventListener(
         "dragleave",
         function (event) {
-          console.log("leave");
           // reset background of potential drop target when the draggable element leaves it
           if (event.target.classList.contains("dropzone")) {
             event.target.classList.remove("bg-gray-200");
@@ -93,6 +92,82 @@ class GoalsManager {
         },
         false
       );
+    });
+
+    const addStepBtn = document.getElementById("add-step-btn");
+    const stepContainers = {
+      undone: document.getElementById("steps-undone"),
+      doing: document.getElementById("steps-doing"),
+      done: document.getElementById("steps-done")
+    };
+  
+    addStepBtn.addEventListener("click", () => {
+      if(document.getElementById("step-item-new")){
+        console.log("you are already adding an step");
+        return;
+      }
+      let node = document.createElement("div");
+        node.setAttribute("draggable", true);
+        node.className = "draggable bg-white hover-trigger p-2 rounded mt-1 border-b border-grey cursor-pointer hover:bg-grey-lighter flex justify-between";
+        node.id = "step-item-new";
+      let html = `
+        <input type="text" placeholder="step title">
+        <div class='hover-target justify-between'>
+          <img class='edit-btn mr-2 transition duration-500 ease-in-out hover:bg-gray-100 transform  hover:scale-150  hidden'
+            src="https://img.icons8.com/dotty/16/000000/edit.png" />
+          <img class='add-btn mr-2 transition duration-500 ease-in-out hover:bg-gray-100 transform  hover:scale-150'
+            src="https://img.icons8.com/dotty/16/000000/add.png" />
+          <img class='cancel-btn transition duration-500 ease-in-out hover:bg-gray-100 transform  hover:scale-150'
+            src="https://img.icons8.com/dotty/16/000000/trash.png" />
+          </div>
+        </div>`;
+      node.innerHTML = html;
+      stepContainers.undone.appendChild(node);
+      const addBtn = node.querySelector('.add-btn');
+      const cancelBtn = node.querySelector('.cancel-btn');
+      const editBtn = node.querySelector('.edit-btn');
+      addBtn.addEventListener("click", (e) => {
+        console.log("Please add this to steps of goal");
+        addBtn.classList.add("hidden");
+        editBtn.classList.remove("hidden");
+        node.setAttribute("draggable", true);
+        node.classList.add("draggable");
+
+        node.addEventListener(
+          "dragstart",
+          function (event) {
+            Array.from(droppable).forEach((dropField)=>{
+              dropField.classList.add('dottedBorder')
+            })
+            // store a ref. on the dragged elem
+            dragged = event.target;
+            // make it half transparent
+            event.target.style.opacity = 0.5;
+          },
+          false
+        );
+    
+        node.addEventListener(
+          "dragend",
+          function (event) {
+    
+            Array.from(droppable).forEach((dropField)=>{
+              dropField.classList.remove('bg-white')
+              dropField.classList.remove('dottedBorder')
+            })
+            // reset the transparency
+            event.target.style.opacity = "";
+          },
+          false
+        );
+      });
+      cancelBtn.addEventListener("click", () => {
+        node.remove();
+      });
+
+      
+  
+  
     });
   }
 
@@ -173,12 +248,10 @@ class GoalsManager {
           isDone ? this.info.goals.done.all += 1 : this.info.goals.done.all -= 1;
           isDone ? this.info.goals.done[goal.category] += 1 : this.info.goals.done[goal.category] -= 1;
           this.updateInfo();
-          console.log(this);
         });
 
         removeGoalBtn.dataset.index = index;
         removeGoalBtn.addEventListener('click', (e) => {
-          console.log("remove");
           this.selected = {
             goal: this.goals[index],
             index: index
@@ -238,7 +311,6 @@ class GoalsManager {
       "dragstart",
       function (event) {
         Array.from(droppable).forEach((dropField)=>{
-          console.log(dropField);
           dropField.classList.add('dottedBorder')
         })
         // store a ref. on the dragged elem
@@ -262,14 +334,8 @@ class GoalsManager {
       },
       false
     );
-
-
       
     }
-    
-
-
-    
   }
 
   updateInfo(){
