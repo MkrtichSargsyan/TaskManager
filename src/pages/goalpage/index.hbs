@@ -4,7 +4,7 @@
       <div class="flex justify-between py-1">
         <h3 class="text-sm">Project name</h3>
       </div>
-      <div class="droppable dropzone text-sm mt-2" id="steps-undone">
+      <div class="droppable dropzone text-sm mt-2" id="steps-undone" data-status="undone">
 
         {{!-- <div id="draggable" draggable="true" ondragstart="event.dataTransfer.setData('text/plain',null)"
           class="draggable bg-white hover-trigger p-2 rounded mt-1 border-b border-grey cursor-pointer hover:bg-grey-lighter flex justify-between">
@@ -32,7 +32,7 @@
       <div class="flex justify-between py-1">
         <h3 class="text-sm">Doing</h3>
       </div>
-      <div class="droppable dropzone text-sm my-2 min-h-full" id="steps-doing">
+      <div class="droppable dropzone text-sm my-2 min-h-full" id="steps-doing" data-status="doing">
 
 
 
@@ -45,7 +45,7 @@
       <div class="flex justify-between py-1">
         <h3 class="text-sm">Done</h3>
       </div>
-      <div class="droppable dropzone text-sm my-2 min-h-full" id="steps-done">
+      <div class="droppable dropzone text-sm my-2 min-h-full" id="steps-done" data-status="done">
 
       </div>
     </div>

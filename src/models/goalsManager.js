@@ -272,6 +272,7 @@ class GoalsManager {
   }
 
   selectGoal(goal, index){
+    this.selectedGoalIndex = index;
     this.renderSteps(goal);
   }
 
@@ -282,7 +283,12 @@ class GoalsManager {
       done: document.getElementById("steps-done")
     };
 
+    containers.undone.innerHTML = "";
+    containers.doing.innerHTML = "";
+    containers.done.innerHTML = "";
+
     for (let index = 0; index < containers.length; index++) {
+      console.log('clean containers');
       container[index].innerHTML = "";
     }
     for (let index = 0; index < goal.steps.length; index++) {
@@ -292,6 +298,7 @@ class GoalsManager {
       node.setAttribute("draggable", true);
       node.className = "draggable bg-white hover-trigger p-2 rounded mt-1 border-b border-grey cursor-pointer hover:bg-grey-lighter flex justify-between";
       node.id = "step-item-" + index;
+      node.dataset.index = index;
       let html = `
           <p>${step.text}</p>
           <div class='hover-target justify-between'>
@@ -323,7 +330,7 @@ class GoalsManager {
 
     node.addEventListener(
       "dragend",
-      function (event) {
+       (event) => {
 
         Array.from(droppable).forEach((dropField)=>{
           dropField.classList.remove('bg-white')
@@ -331,6 +338,12 @@ class GoalsManager {
         })
         // reset the transparency
         event.target.style.opacity = "";
+        console.log(dragged);
+        console.log(this);
+        console.log(goal);
+        const status = dragged.parentElement.dataset.status;
+        this.goals[this.selectedGoalIndex].steps[dragged.dataset.index].status = status;
+        console.log("save changes");
       },
       false
     );
