@@ -107,11 +107,10 @@ class GoalsManager {
         return;
       }
       let node = document.createElement("div");
-        node.setAttribute("draggable", true);
-        node.className = "draggable bg-white hover-trigger p-2 rounded mt-1 border-b border-grey cursor-pointer hover:bg-grey-lighter flex justify-between";
+        node.className = "bg-white hover-trigger p-2 rounded mt-1 border-b border-grey cursor-pointer hover:bg-grey-lighter flex justify-between";
         node.id = "step-item-new";
       let html = `
-        <input type="text" placeholder="step title">
+        <input type="text" placeholder="step text" id="step-text-input">
         <div class='hover-target justify-between'>
           <img class='edit-btn mr-2 transition duration-500 ease-in-out hover:bg-gray-100 transform  hover:scale-150  hidden'
             src="https://img.icons8.com/dotty/16/000000/edit.png" />
@@ -132,6 +131,16 @@ class GoalsManager {
         editBtn.classList.remove("hidden");
         node.setAttribute("draggable", true);
         node.classList.add("draggable");
+        const stepIndex = this.goals[this.selectedGoalIndex].steps.length
+        node.id = "step-item-" + stepIndex;
+        node.dataset.index = stepIndex;
+         
+        const step = {
+          text: document.getElementById("step-text-input").value,
+          status: "undone"
+        }
+        this.goals[this.selectedGoalIndex].steps.push(step);
+
 
         node.addEventListener(
           "dragstart",
@@ -149,7 +158,7 @@ class GoalsManager {
     
         node.addEventListener(
           "dragend",
-          function (event) {
+           (event) => {
     
             Array.from(droppable).forEach((dropField)=>{
               dropField.classList.remove('bg-white')
@@ -157,6 +166,9 @@ class GoalsManager {
             })
             // reset the transparency
             event.target.style.opacity = "";
+            const status = dragged.parentElement.dataset.status;
+            this.goals[this.selectedGoalIndex].steps[dragged.dataset.index].status = status;
+            console.log("save changes");
           },
           false
         );
@@ -338,9 +350,6 @@ class GoalsManager {
         })
         // reset the transparency
         event.target.style.opacity = "";
-        console.log(dragged);
-        console.log(this);
-        console.log(goal);
         const status = dragged.parentElement.dataset.status;
         this.goals[this.selectedGoalIndex].steps[dragged.dataset.index].status = status;
         console.log("save changes");
