@@ -8,10 +8,10 @@ class Goal {
 
   render(container) {
     return new Promise((resolve) => {
-      let node = document.createElement("div");
-      node.className = "mb-8 px-1 w-full md:w-1/2 lg:px-4 lg:w-1/3";
+      const node = document.createElement('div');
+      node.className = 'mb-8 px-1 w-full md:w-1/2 lg:px-4 lg:w-1/3';
       const isDone = this.isDone ? 'checked' : '';
-      let html = `
+      const html = `
       <article class="bg-gray-200 overflow-hidden rounded-lg shadow-lg">
         <a href="#goal" class="select-goal">
           <img alt="Placeholder" class="block h-auto w-full" src="https://picsum.photos/600/400/?random">
@@ -23,7 +23,7 @@ class Goal {
             </a>
           </h1>
           <p class="text-grey-darker text-sm ml-2">
-            ${new Date().toJSON().slice(0, 10).replace(/-/g, "/")}
+            ${new Date().toJSON().slice(0, 10).replace(/-/g, '/')}
           </p>
         </header>
         <footer class="flex items-center justify-between leading-none p-2 md:p-4">
@@ -41,7 +41,7 @@ class Goal {
       node.innerHTML = html;
       container.appendChild(node);
       resolve(node);
-    })
+    });
   }
 }
 

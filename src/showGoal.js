@@ -1,12 +1,12 @@
-import Goal from "./models/goal";
+import Goal from './models/goal';
 
 export default (goal) => {
-  let text = goal.category;
+  const text = goal.category;
   goal.create();
   document.getElementById(
-    text
+    text,
   ).innerHTML = `${Goal.goalsAmount[text].total}/${Goal.goalsAmount[text].done}`;
   document.getElementById(
-    "all"
-  ).innerHTML = `${Goal.goalsAmount["all"].total}/${Goal.goalsAmount["all"].done}`;
+    'all',
+  ).innerHTML = `${Goal.goalsAmount.all.total}/${Goal.goalsAmount.all.done}`;
 };

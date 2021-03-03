@@ -1,25 +1,23 @@
-import goalpage from "./pages/goalpage/goalpage";
-import homepage from "./pages/homepage/homepage";
+import homepage from './pages/homepage/homepage';
 
-const homepageContent = document.getElementById("homepage-content");
-const goalspageContent = document.getElementById("goalpage-content");
+const homepageContent = document.getElementById('homepage-content');
+const goalspageContent = document.getElementById('goalpage-content');
 
 class Router {
-  renderPage(path) {
+  renderPage =(path) => {
     switch (path) {
-      case "":
+      case '':
         homepage();
-        homepageContent.classList.remove("hidden");
-        goalspageContent.classList.add("hidden");
+        homepageContent.classList.remove('hidden');
+        goalspageContent.classList.add('hidden');
         break;
-      case "#goal":
-        goalpage();
-        homepageContent.classList.add("hidden");
-        goalspageContent.classList.remove("hidden");
+      case '#goal':
+        homepageContent.classList.add('hidden');
+        goalspageContent.classList.remove('hidden');
         break;
       default:
-        homepageContent.classList.remove("hidden");
-        goalspageContent.classList.add("hidden");
+        homepageContent.classList.remove('hidden');
+        goalspageContent.classList.add('hidden');
     }
   }
 }
