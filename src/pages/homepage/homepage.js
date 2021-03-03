@@ -1,5 +1,4 @@
 import Goal from "../../models/goal";
-import showGoal from "../../showGoal";
 import modal from "../../modal";
 import GoalsManager from "../../models/goalsManager"
 
@@ -17,38 +16,73 @@ export default () => {
   // -------------------------
 
   /* Testing data */
+  let goalsData = JSON.parse(localStorage.getItem('goals'));
   let goals = [];
-  let steps = [];
-  const step = {
-    text: "You need to start",
-    status: "undone"
-  };
-  const step2 = {
-    text: "This is step 2 nad it's doing",
-    status: "doing"
+  if(!goalsData){
+    
+    const goal2 = new Goal(
+      "Create a goal manager",
+       "today", 
+       true, [
+        {
+          text: "Init webpack and install dependencies",
+          status: "done"
+        },
+        {
+          text: "Create webpage layout",
+          status: "done"
+        },
+        {
+          text: "Create goalManager class",
+          status: "done"
+        },
+        {
+          text: "Sync goalManager with layout events",
+          status: "done"
+        },
+        {
+          text: "Test goal manager app",
+          status: "doing"
+        },
+        {
+          text: "Clean goalManager class",
+          status: "undone"
+        }
+      ]);
+    const goal3 = new Goal("Sell old stuffs", "week", true, [
+      {
+        text: "Xbox 360",
+        status: "doing"
+      },
+      {
+        text: "Old books",
+        status: "done"
+      },
+      {
+        text: "Goal Manager App",
+        status: "undone"
+      }
+    ]);
+    const goal4 = new Goal("Get a good job", "year");
+    const goal5 = new Goal("Build a web development company", "year");
+  
+    goals.push(goal2);
+    goals.push(goal3);
+    goals.push(goal4);
+    goals.push(goal5);
+    localStorage.setItem('goals', JSON.stringify(goals));
+  } else {
+    console.log(goalsData);
+    goalsData.forEach(goal => {
+      goals.push(new Goal(
+        goal.title,
+        goal.category,
+        goal.isDone,
+        goal.steps
+      ))
+    });
+    console.log(goals);
   }
-  const step3 = {
-    text: "This is step 3 and it's done",
-    status: "done"
-  }
-  const step4 = {
-    text: "This is step 4 and it's done",
-    status: "done"
-  }
-  steps.push(step);
-  steps.push(step2);
-  steps.push(step3);
-  steps.push(step4);
-
-  const goal2 = new Goal("Goal 2", "today", true, steps);
-  const goal3 = new Goal("Goal 3", "week", true);
-  const goal4 = new Goal("Goal 4", "year");
-  const goal5 = new Goal("Goal 5", "year");
-
-  goals.push(goal2);
-  goals.push(goal3);
-  goals.push(goal4);
-  goals.push(goal5);
 
   let goalsManager = new GoalsManager(goals, goalsContainer);
   goalsManager.render();

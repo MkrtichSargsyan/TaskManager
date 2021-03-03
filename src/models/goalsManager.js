@@ -140,6 +140,7 @@ class GoalsManager {
           status: "undone"
         }
         this.goals[this.selectedGoalIndex].steps.push(step);
+        localStorage.setItem('goals', JSON.stringify(this.goals));
 
 
         node.addEventListener(
@@ -168,7 +169,7 @@ class GoalsManager {
             event.target.style.opacity = "";
             const status = dragged.parentElement.dataset.status;
             this.goals[this.selectedGoalIndex].steps[dragged.dataset.index].status = status;
-            console.log("save changes");
+            localStorage.setItem('goals', JSON.stringify(this.goals));
           },
           false
         );
@@ -190,6 +191,7 @@ class GoalsManager {
   addGoal(title, category){
     const goal = new Goal(title, category, false);
     this.goals.push(goal);
+    localStorage.setItem('goals', JSON.stringify(this.goals));
     this.info.goals.total.all += 1;
     this.info.goals.total[goal.category] += 1;
     this.renderGoals();
@@ -201,6 +203,7 @@ class GoalsManager {
   removeGoal(){
     const index = this.selected.index
     this.goals.splice(index, 1);
+    localStorage.setItem('goals', JSON.stringify(this.goals));
     this.renderGoals();
     // document.getElementById("goal-manager-item-" + index).remove();
     this.info.goals.total.all -= 1;
@@ -214,13 +217,9 @@ class GoalsManager {
     
   }
 
-  setGoalIsDone(goal, isDone){
-    goal.isDone = isDone;
-
-  }
-
   setStepStatus(goalIndex, stepIndex, status){
     this.goals[goalIndex].steps[stepIndex].status = status;
+    localStorage.setItem('goals', JSON.stringify(this.goals));
   }
 
   renderGoals(category = "all"){
@@ -352,7 +351,7 @@ class GoalsManager {
         event.target.style.opacity = "";
         const status = dragged.parentElement.dataset.status;
         this.goals[this.selectedGoalIndex].steps[dragged.dataset.index].status = status;
-        console.log("save changes");
+        localStorage.setItem('goals', JSON.stringify(this.goals));
       },
       false
     );
