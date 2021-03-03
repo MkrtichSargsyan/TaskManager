@@ -37,6 +37,7 @@ aside li:hover {
   color: #fff;
   padding: 15px;
 }
+
 #ct span {
   background: #1d1f20;
   color: #f1c40f;
@@ -45,6 +46,7 @@ aside li:hover {
   position: relative;
   top: -28px;
 }
+
 #ct .corner {
   height: 30px;
   width: 30px;
@@ -60,25 +62,30 @@ aside li:hover {
   left: -16px;
   border-color: transparent transparent #f1c40f transparent;
 }
+
 #ct #right_top {
   top: -16px;
   right: -16px;
   border-color: transparent transparent transparent #f1c40f;
 }
+
 #ct #left_bottom {
   bottom: -16px;
   left: -16px;
   border-color: transparent #f1c40f transparent transparent;
 }
+
 #ct #right_bottom {
   bottom: -16px;
   right: -16px;
   border-color: #f1c40f transparent transparent transparent;
 }
+
 #ct p {
   padding-top: 13px;
   font-size: 18px;
 }
+
 #ct p i {
   color: white;
 }
@@ -95,6 +102,7 @@ aside li:hover {
   0% {
     -webkit-transform: rotate(0deg);
   }
+
   100% {
     -webkit-transform: rotate(360deg);
   }
@@ -104,6 +112,7 @@ aside li:hover {
   0% {
     transform: rotate(0deg);
   }
+
   100% {
     transform: rotate(360deg);
   }
