@@ -1,0 +1,51 @@
+{
+  "name": "Todo-List-js",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "npx webpack --config webpack.config.js --mode development",
+    "build": "webpack",
+    "start": "webpack serve --mode=development --config webpack.config.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MkrtichSargsyan/Todo-List-js.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MkrtichSargsyan/Todo-List-js/issues"
+  },
+  "homepage": "https://github.com/MkrtichSargsyan/Todo-List-js#readme",
+  "devDependencies": {
+    "@babel/core": "^7.12.17",
+    "@babel/plugin-proposal-class-properties": "^7.12.13",
+    "@babel/preset-env": "^7.12.17",
+    "babel-eslint": "10.1.x",
+    "babel-loader": "^8.2.2",
+    "css-loader": "^5.0.2",
+    "eslint": "6.8.x",
+    "eslint-config-airbnb-base": "14.1.x",
+    "eslint-plugin-import": "2.20.x",
+    "file-loader": "^6.2.0",
+    "handlebars-loader": "^1.7.1",
+    "html-webpack-plugin": "^5.1.0",
+    "postcss": "^8.2.6",
+    "postcss-loader": "^5.0.0",
+    "style-loader": "^2.0.0",
+    "stylelint": "13.3.x",
+    "stylelint-config-standard": "20.0.x",
+    "stylelint-csstree-validator": "^1.9.0",
+    "stylelint-scss": "3.17.x",
+    "webpack": "^5.23.0",
+    "webpack-cli": "^4.5.0",
+    "webpack-dev-server": "^3.11.2"
+  },
+  "dependencies": {
+    "autoprefixer": "^10.2.4",
+    "normalize.css": "^8.0.1",
+    "tailwindcss": "^2.0.3"
+  }
+}
