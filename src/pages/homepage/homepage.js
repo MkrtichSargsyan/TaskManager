@@ -17,6 +17,28 @@ export default () => {
   const goalsData = JSON.parse(localStorage.getItem('goals'));
   const goals = [];
   if (!goalsData) {
+    const goal1 = new Goal('Drink vodka with Mike', 'today', false, [
+      {
+        text: 'Finish goal manager project',
+        status: 'done',
+      },
+      {
+        text: 'Get TSE apporval',
+        status: 'done',
+      },
+      {
+        text: 'Buy ticket to Armenia',
+        status: 'undone',
+      },
+      {
+        text: 'Drink 65% alcohol volume vodka with Mike and survive',
+        status: 'doing',
+      },
+      {
+        text: 'Enjoy',
+        status: 'doing',
+      }
+    ]);
     const goal2 = new Goal('Create a goal manager', 'today', true, [
       {
         text: 'Init webpack and install dependencies',
@@ -60,6 +82,7 @@ export default () => {
     const goal4 = new Goal('Get a good job', 'year');
     const goal5 = new Goal('Build a web development company', 'year');
 
+    goals.push(goal1);
     goals.push(goal2);
     goals.push(goal3);
     goals.push(goal4);
