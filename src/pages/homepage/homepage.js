@@ -37,7 +37,7 @@ export default () => {
       {
         text: 'Enjoy',
         status: 'doing',
-      }
+      },
     ]);
     const goal2 = new Goal('Create a goal manager', 'today', true, [
       {

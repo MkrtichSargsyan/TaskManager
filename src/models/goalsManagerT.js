@@ -2,6 +2,7 @@
 /* eslint-disable no-loop-func */
 
 import Goal from './goal';
+
 class GoalsManager {
   constructor(goals = []) {
     this.goals = goals;
