@@ -1,4 +1,3 @@
-import Goal from '../models/goal';
 import GoalsManager from '../models/goalsManager';
 
 const goalsManager = new GoalsManager();
@@ -6,25 +5,28 @@ const goalsManager = new GoalsManager();
 
 describe('GoalManager add method', () => {
   /* Create a goal */
-  const goal1 = new Goal('a goal', 'week');
-  const goal2 = new Goal('a goal', 'year');
-
 
   test('Create a new goal', () => {
-    goalsManager.addGoal(goal1);
+    goalsManager.addGoal('a week goal', 'week');
     expect(goalsManager.goals.length)
       .toBe(1);
   });
 
   test('Create another goal', () => {
-    goalsManager.addGoal(goal2);
+    goalsManager.addGoal('a year goal', 'year');
     expect(goalsManager.goals.length)
       .toBe(2);
   });
 
   test('Remove last goal', () => {
-    goalsManager.removeGoal(goal1);
+    goalsManager.removeGoal(goalsManager.goals[1]);
     expect(goalsManager.goals.length)
+      .toBe(1);
+  });
+
+  test('Get goals by category', () => {
+    const goals = goalsManager.getByCategory('week');
+    expect(goals.length)
       .toBe(1);
   });
 });

@@ -44,6 +44,10 @@ class GoalsManager {
     if (goal.isDone) this.info.goals.done.all -= 1;
     if (goal.isDone) this.info.goals.done[goal.category] -= 1;
   }
+
+  getByCategory(category) {
+    return this.goals.filter(element => element.category === category);
+  }
 }
 
 export default GoalsManager;
