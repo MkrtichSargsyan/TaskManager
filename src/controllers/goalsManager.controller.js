@@ -1,13 +1,11 @@
 /* eslint-disable no-unused-expressions */
 /* eslint-disable no-loop-func */
 
-import GoalController from '../controllers/goal.controller'
+import GoalController from './goal.controller';
 
 const sidebarLinks = Array.from(
   document.getElementById('sidebar-links').getElementsByTagName('li'),
 );
-
-let goalController = new GoalController();
 
 let dragged;
 
@@ -22,7 +20,7 @@ class GoalsManagerController {
         week: document.getElementById('goals-week'),
         year: document.getElementById('goals-year'),
         warningModal: document.getElementById('warning-modal'),
-      }
+      },
     };
 
     const droppable = document.getElementsByClassName('droppable');
@@ -180,7 +178,9 @@ class GoalsManagerController {
     this.goalsManager.info.goals.total.all -= 1;
     this.goalsManager.info.goals.total[this.selected.goal.category] -= 1;
     if (this.selected.goal.isDone) this.goalsManager.info.goals.done.all -= 1;
-    if (this.selected.goal.isDone) this.goalsManager.info.goals.done[this.selected.goal.category] -= 1;
+    if (this.selected.goal.isDone) {
+      this.goalsManager.info.goals.done[this.selected.goal.category] -= 1;
+    }
     delete this.selected;
     this.updateInfo();
     sidebarLinks.forEach((link) => link.classList.remove('bg-gray-200'));
@@ -193,7 +193,7 @@ class GoalsManagerController {
   }
 
   renderGoals() {
-    //this.container.innerHTML = '';
+    // this.container.innerHTML = '';
     for (let index = 0; index < this.goalsManager.goals.length; index += 1) {
       const goal = this.goalsManager.goals[index];
       this.renderGoal(goal, index);
@@ -213,7 +213,7 @@ class GoalsManagerController {
   }
 
   renderGoal(goal, index) {
-    goalController.render(goal, this.container).then((node) => {
+    GoalController.render(goal, this.container).then((node) => {
       node.id = `goal-manager-item-${index}`;
       const removeGoalBtn = node.querySelector('.remove-goal-btn');
       const isDoneInput = node.querySelector('.goal-is-done-checkbox');

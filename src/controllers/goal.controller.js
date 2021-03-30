@@ -1,6 +1,5 @@
 class GoalController {
-
-  render(goal, container) {
+  static render(goal, container) {
     return new Promise((resolve) => {
       const node = document.createElement('div');
       node.className = 'mb-8 px-1 w-full md:w-1/2 lg:px-4 lg:w-1/3';

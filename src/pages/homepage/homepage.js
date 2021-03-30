@@ -1,7 +1,7 @@
 import Goal from '../../models/goal';
 import '../../modal';
 import GoalsManager from '../../models/goalsManager';
-import GoalsManagerController from '../../controllers/goalsManager.controller'
+import GoalsManagerController from '../../controllers/goalsManager.controller';
 
 export default () => {
   const addGoalBtn = document.getElementById('add-goal-btn');
