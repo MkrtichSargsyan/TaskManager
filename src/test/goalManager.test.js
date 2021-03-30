@@ -1,5 +1,5 @@
-import Goal from '../models/goalT';
-import GoalsManager from '../models/goalsManagerT';
+import Goal from '../models/goal';
+import GoalsManager from '../models/goalsManager';
 
 const goalsManager = new GoalsManager();
 
