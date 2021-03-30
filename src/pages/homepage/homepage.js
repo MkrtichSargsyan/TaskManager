@@ -1,6 +1,7 @@
 import Goal from '../../models/goal';
 import '../../modal';
 import GoalsManager from '../../models/goalsManager';
+import GoalsManagerController from '../../controllers/goalsManager.controller';
 
 export default () => {
   const addGoalBtn = document.getElementById('add-goal-btn');
@@ -37,7 +38,7 @@ export default () => {
       {
         text: 'Enjoy',
         status: 'doing',
-      }
+      },
     ]);
     const goal2 = new Goal('Create a goal manager', 'today', true, [
       {
@@ -94,8 +95,9 @@ export default () => {
     });
   }
 
-  const goalsManager = new GoalsManager(goals, goalsContainer);
-  goalsManager.render();
+  const goalsManager = new GoalsManager(goals);
+  const goalsManagerController = new GoalsManagerController(goalsManager, goalsContainer);
+  goalsManagerController.render();
 
   // goals.forEach((goal) => {
   //   showGoal(goal);
@@ -112,7 +114,7 @@ export default () => {
         .innerHTML.split(' ')[0]
         .toLowerCase();
 
-      goalsManager.showByCategory(category);
+      goalsManagerController.showByCategory(category);
       // let filteredGoals =
       //   text === "all" ? goals : goals.filter((goal) => goal.category === text);
       // filteredGoals.forEach((goal) => {
@@ -134,14 +136,14 @@ export default () => {
         .getElementsByClassName('dangerAlert')[0]
         .classList.remove('hidden');
     } else {
-      goalsManager.addGoal(goalForm.title.value, goalForm.category.value);
+      goalsManagerController.addGoal(goalForm.title.value, goalForm.category.value);
       document.getElementsByClassName('dangerAlert')[0].classList.add('hidden');
       document.getElementById('modal').classList.add('hidden');
     }
   });
 
   removeGoalBtn.addEventListener('click', () => {
-    goalsManager.removeGoal();
+    goalsManagerController.removeGoal();
     warningModal.classList.add('hidden');
   });
 };
