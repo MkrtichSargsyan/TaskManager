@@ -14,7 +14,9 @@
   <header class="z-10 w-full fixed p-2 px-8 header_bg">
     <nav class="flex justify-between h-10">
       <div class='flex flex-1'>
-        <img class='h-full mr-4' src="https://img.icons8.com/cotton/512/ffffff/home--v1.png" />
+        <a href="#/" style="width: 70px;">
+          <img class='h-full mr-4' src="https://img.icons8.com/cotton/512/ffffff/home--v1.png" />
+        </a>
         <div class="shadow flex h-full">
           <input class="w-full rounded p-2" type="text" placeholder="Search...">
           <button class="bg-white w-auto flex justify-end items-center text-blue-500 p-2 hover:text-blue-400">
@@ -24,130 +26,212 @@
       </div>
       <div class='h-full flex-1 justify-center'><img class='h-full m-auto' id="logo" alt="logo" /></div>
       <div class='flex flex-1 justify-end items-center'>
-        <img id="open-modal-btn" class='h-4/5 mr-4' src="https://img.icons8.com/ultraviolet/480/ffffff/plus.png" />
+        <img id="open-modal-btn" class='h-4/5 mr-4 transform hover:scale-110'
+          src="https://img.icons8.com/ultraviolet/480/ffffff/plus.png" />
         <img src="https://img.icons8.com/doodle/50/000000/user-male.png" />
       </div>
     </nav>
-  </header>  <main class="bg-gray-50 min-h-screen pt-14 flex flex-row">
-    <aside class="fixed h-screen w-96 pl-32 pt-24">
-      <div class="sidebar_bg bg-gray-200 shadow-sm">
-        <ul>
-          <li class='flex justify-between mb-5 text-xl courgetteFont text-gray-500 cursor-pointer font-semibold'>
-            <h3> All goals</h3>
-            <span id='all' />
-          </li>
-          <li class='flex justify-between mb-5 text-xl courgetteFont text-gray-500 cursor-pointer font-semibold'>
-            <h3>Year goals</h3>
-            <span id='year' />
-          </li>
-          <li class='flex justify-between mb-5 text-xl courgetteFont text-gray-500 cursor-pointer font-semibold'>
-            <h3>Week goals</h3>
-            <span id='week' />
-          </li>
-          <li class='flex justify-between mb-5 text-xl courgetteFont text-gray-500 cursor-pointer font-semibold'>
-            <h3>Today goals</h3>
-            <span id='today' />
-          </li>
-        </ul>
-    
-        <div id="ct">
-          <div class="corner " id="left_top"></div>
-          <div class="corner" id="left_bottom"></div>
-          <div class="corner" id="right_top"></div>
-          <div class="corner" id="right_bottom"></div>
-          <span>Winston Churchill</span>
-          <blockquote>
-            <p><i>&ldquo;Success consists of going from failure to failure without loss of enthusiasm.&rdquo; </i></p>
-          </blockquote>
-        </div>
-    
-      </div>
-    </aside>  <div class="ml-96 flex-1 py-24 px-12 pr-32">
-      <div class="w-full flex flex-wrap" id="goals-container">
-      </div>
-    </div>  <!-- This example requires Tailwind CSS v2.0+ -->
-    <div class="fixed z-10 inset-0 overflow-y-auto hidden" id="modal">
-      <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
-        <!--
-          Background overlay, show/hide based on modal state.
-    
-          Entering: "ease-out duration-300"
-            From: "opacity-0"
-            To: "opacity-100"
-          Leaving: "ease-in duration-200"
-            From: "opacity-100"
-            To: "opacity-0"
-        -->
-        <div class="fixed inset-0 transition-opacity" aria-hidden="true">
-          <div class="absolute inset-0 bg-gray-500 opacity-75 close-modal"></div>
-        </div>
-    
-        <!-- This element is to trick the browser into centering the modal contents. -->
-        <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
-        <!--
-          Modal panel, show/hide based on modal state.
-    
-          Entering: "ease-out duration-300"
-            From: "opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-            To: "opacity-100 translate-y-0 sm:scale-100"
-          Leaving: "ease-in duration-200"
-            From: "opacity-100 translate-y-0 sm:scale-100"
-            To: "opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-        -->
-        <div
-          class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full"
-          role="dialog" aria-modal="true" aria-labelledby="modal-headline">
-          <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
-            <div class="sm:flex sm:items-start">
-              <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
-                <h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-headline">
-                  Add new goal
-                </h3>
-                <div class="mt-2">
-                  <form action="#" method="POST">
-                    <div class="shadow overflow-hidden sm:rounded-md">
-                      <div class="px-4 py-5 bg-white sm:p-6">
-                        <div class="flex flex-col">
-    
-    
-                          <div class="">
-                            <label for="goal-title" class="block text-sm font-medium text-gray-700">Title</label>
-                            <input type="text" name="goal-title" id="goal-title"
-                              class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+  </header>  <main class="bg-gray-50 min-h-screen flex flex-row">
+    <div id='homepage-content' class='pt-12'>
+        <aside class="fixed h-screen w-96 pl-32 pt-24">
+          <div class="sidebar_bg bg-gray-200 shadow-sm">
+            <ul id='sidebar-links'>
+              <li
+                class='flex justify-between mb-5 text-xl courgetteFont text-gray-500 cursor-pointer font-semibold bg-gray-200'>
+                <h3>All goals</h3>
+                <span id='goals-all' />
+              </li>
+              <li class='flex justify-between mb-5 text-xl courgetteFont text-gray-500 cursor-pointer font-semibold'>
+                <h3>Year goals</h3>
+                <span id='goals-year' />
+              </li>
+              <li class='flex justify-between mb-5 text-xl courgetteFont text-gray-500 cursor-pointer font-semibold'>
+                <h3>Week goals</h3>
+                <span id='goals-week' />
+              </li>
+              <li class='flex justify-between mb-5 text-xl courgetteFont text-gray-500 cursor-pointer font-semibold'>
+                <h3>Today goals</h3>
+                <span id='goals-today' />
+              </li>
+            </ul>
+        
+            <div id="ct" class='mt-12'>
+              <div class="corner " id="left_top"></div>
+              <div class="corner" id="left_bottom"></div>
+              <div class="corner" id="right_top"></div>
+              <div class="corner" id="right_bottom"></div>
+              <span>Winston Churchill</span>
+              <blockquote>
+                <p><i>&ldquo;Success consists of going from failure to failure without loss of enthusiasm.&rdquo; </i></p>
+              </blockquote>
+            </div>
+        
+          </div>
+        </aside>  <div class="ml-96 flex-1 py-24 px-12 pr-32">
+          <div class="w-full flex flex-wrap" id="goals-container">
+            
+          </div>
+        </div>  <div class="fixed z-10 inset-0 overflow-y-auto hidden" id="modal">
+          <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+        
+            <div class="fixed inset-0 transition-opacity" aria-hidden="true">
+              <div class="absolute inset-0 bg-gray-500 opacity-75 close-modal"></div>
+            </div>
+        
+            <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+        
+            <div
+              class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full"
+              role="dialog" aria-modal="true" aria-labelledby="modal-headline">
+              <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+                <div class="sm:flex sm:items-start">
+                  <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
+                    <h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-headline">
+                      Add new goal
+                    </h3>
+                    <p class='text-red-500 hidden dangerAlert'>Wrong input</p>
+                    <div class="mt-2">
+                      <form action="#" method="POST">
+                        <div class="shadow overflow-hidden sm:rounded-md">
+                          <div class="px-4 py-5 bg-white sm:p-6">
+                            <div class="flex flex-col">
+        
+        
+                              <div class="">
+                                <label for="goal-title" class="block text-sm font-medium text-gray-700">Title</label>
+                                <input type="text" name="goal-title" id="goal-title"
+                                  class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                              </div>
+        
+                              <div class="">
+                                <label for="goal-category" class="block text-sm font-medium text-gray-700">Category</label>
+                                <select id="goal-category" name="goal-category"
+                                  class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                  <option value="all" disabled selected>Select date</option>
+                                  <option value="year">Year Goal</option>
+                                  <option value="week">Week Goal</option>
+                                  <option value="today">Today Goal</option>
+                                </select>
+                              </div>
+        
+                            </div>
                           </div>
-    
-                          <div class="">
-                            <label for="goal-category" class="block text-sm font-medium text-gray-700">Due date</label>
-                            <select id="goal-category" name="goal-category"
-                              class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                              <option selected>Unspecified</option>
-                              <option value="year">Year Goal</option>
-                              <option value="week">Week Goal</option>
-                              <option value="today">Today Goal</option>
-                            </select>
-                          </div>
-    
                         </div>
-                      </div>
+                      </form>
                     </div>
-                  </form>
+                  </div>
                 </div>
+              </div>
+              <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+                <button type="button" id="add-goal-btn"
+                  class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-green-600 text-base font-medium text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm">
+                  Add
+                </button>
+                <button type="button"
+                  class="close-modal mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">
+                  Cancel
+                </button>
               </div>
             </div>
           </div>
-          <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
-            <button type="button" id="add-goal-btn"
-              class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-green-600 text-base font-medium text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm">
-              Add
-            </button>
-            <button type="button"
-              class="close-modal mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">
-              Cancel
-            </button>
+        </div>  <!-- This example requires Tailwind CSS v2.0+ -->
+        <div class="fixed z-10 inset-0 overflow-y-auto hidden" id="warning-modal">
+          <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+            <div class="fixed inset-0 transition-opacity" aria-hidden="true">
+              <div class="absolute inset-0 bg-gray-500 opacity-75 close-modal"></div>
+            </div>
+            <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+            <div
+              class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full"
+              role="dialog" aria-modal="true" aria-labelledby="modal-headline">
+              <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+                <div class="sm:flex sm:items-start">
+                  <div
+                    class="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-red-100 sm:mx-0 sm:h-10 sm:w-10">
+                    <!-- Heroicon name: outline/exclamation -->
+                    <svg class="h-6 w-6 text-red-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                      stroke="currentColor" aria-hidden="true">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                    </svg>
+                  </div>
+                  <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
+                    <h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-headline">
+                      Remove goal
+                    </h3>
+                    <div class="mt-2">
+                      <p class="text-sm text-gray-500">
+                        Are you sure you want to remove this goal? All of your data will be permanently removed. This
+                        action cannot be undone.
+                      </p>
+                      <br>
+                      <p class="text-sm text-gray-500">
+                        I understand life sometimes can be challenging but you can do that!
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+                <button type="button" id="remove-goal-btn"
+                  class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-red-600 text-base font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm">
+                  Remove
+                </button>
+                <button type="button"
+                  class="close-modal mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">
+                  Cancel
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>    </div>
+    <div id='goalpage-content' class="bg-blue-100 flex flex-row w-full">
+      <div class='py-24 flex'>
+        <div class="w-full p-8 font-sans">
+          <div class="rounded bg-gray-300 w-64 p-2">
+            <div class="flex justify-between py-1">
+              <h3 class="text-sm">Project name</h3>
+            </div>
+            <div class="droppable dropzone text-sm mt-2" id="steps-undone" data-status="undone">
+      
+      
+            </div>
+      
+            <div class='my-2 mt-4'>
+              <p class="mt-4 text-gray-400 w-max ml-4 hover:text-gray-800 cursor-pointer" id="add-step-btn">+ Add a step...
+              </p>
+            </div>
           </div>
         </div>
-      </div>
-    </div></main>  <footer class='header_bg fixed bottom-0 text-white h-46 p-4'>
+      
+      
+        <div class="w-full p-8 font-sans">
+          <div class="rounded bg-gray-300 w-64 p-2">
+            <div class="flex justify-between py-1">
+              <h3 class="text-sm">Doing</h3>
+            </div>
+            <div class="droppable dropzone text-sm my-2 min-h-full" id="steps-doing" data-status="doing">
+      
+      
+      
+            </div>
+          </div>
+        </div>
+      
+        <div class="w-full p-8 font-sans">
+          <div class="rounded bg-gray-300 w-64 p-2">
+            <div class="flex justify-between py-1">
+              <h3 class="text-sm">Done</h3>
+            </div>
+            <div class="droppable dropzone text-sm my-2 min-h-full" id="steps-done" data-status="done">
+      
+            </div>
+          </div>
+        </div>
+      
+      </div>    </div>
+  </main>
+  <footer class='header_bg fixed bottom-0 text-white h-46 p-4'>
   
     <div class='flex'>
       <div class='flex-1 flex justify-center items-center'>

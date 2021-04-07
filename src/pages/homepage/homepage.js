@@ -1,6 +1,7 @@
 import Goal from '../../models/goal';
 import '../../modal';
 import GoalsManager from '../../models/goalsManager';
+import GoalsManagerController from '../../controllers/goalsManager.controller';
 
 export default () => {
   const addGoalBtn = document.getElementById('add-goal-btn');
@@ -17,6 +18,28 @@ export default () => {
   const goalsData = JSON.parse(localStorage.getItem('goals'));
   const goals = [];
   if (!goalsData) {
+    const goal1 = new Goal('Drink vodka with Mike', 'today', false, [
+      {
+        text: 'Finish goal manager project',
+        status: 'done',
+      },
+      {
+        text: 'Get TSE apporval',
+        status: 'done',
+      },
+      {
+        text: 'Buy ticket to Armenia',
+        status: 'undone',
+      },
+      {
+        text: 'Drink 65% alcohol volume vodka with Mike and survive',
+        status: 'doing',
+      },
+      {
+        text: 'Enjoy',
+        status: 'doing',
+      },
+    ]);
     const goal2 = new Goal('Create a goal manager', 'today', true, [
       {
         text: 'Init webpack and install dependencies',
@@ -60,6 +83,7 @@ export default () => {
     const goal4 = new Goal('Get a good job', 'year');
     const goal5 = new Goal('Build a web development company', 'year');
 
+    goals.push(goal1);
     goals.push(goal2);
     goals.push(goal3);
     goals.push(goal4);
@@ -71,8 +95,9 @@ export default () => {
     });
   }
 
-  const goalsManager = new GoalsManager(goals, goalsContainer);
-  goalsManager.render();
+  const goalsManager = new GoalsManager(goals);
+  const goalsManagerController = new GoalsManagerController(goalsManager, goalsContainer);
+  goalsManagerController.render();
 
   // goals.forEach((goal) => {
   //   showGoal(goal);
@@ -89,7 +114,7 @@ export default () => {
         .innerHTML.split(' ')[0]
         .toLowerCase();
 
-      goalsManager.showByCategory(category);
+      goalsManagerController.showByCategory(category);
       // let filteredGoals =
       //   text === "all" ? goals : goals.filter((goal) => goal.category === text);
       // filteredGoals.forEach((goal) => {
@@ -111,14 +136,14 @@ export default () => {
         .getElementsByClassName('dangerAlert')[0]
         .classList.remove('hidden');
     } else {
-      goalsManager.addGoal(goalForm.title.value, goalForm.category.value);
+      goalsManagerController.addGoal(goalForm.title.value, goalForm.category.value);
       document.getElementsByClassName('dangerAlert')[0].classList.add('hidden');
       document.getElementById('modal').classList.add('hidden');
     }
   });
 
   removeGoalBtn.addEventListener('click', () => {
-    goalsManager.removeGoal();
+    goalsManagerController.removeGoal();
     warningModal.classList.add('hidden');
   });
 };
