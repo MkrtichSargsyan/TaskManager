@@ -16,7 +16,7 @@
 
 ## Live Demo
 
-<a href= "https://rawcdn.githack.com/MkrtichSargsyan/Todo-List-js/6ccdacfd44c83358d2a92c0bfac9f690d8887792/dist/index.html" target="_blank">Live version</a>
+<a href= "https://mkrtichsargsyan.github.io/Todo-List-js/" target="_blank">Live version</a>
 
 ## Getting Started
 
