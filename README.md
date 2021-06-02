@@ -16,7 +16,7 @@
 
 ## Live Demo
 
-<a href= "https://mkrtichsargsyan.github.io/Todo-List-js/" target="_blank">Live version</a>
+<a href= "https://lucid-newton-ca7dcb.netlify.app/" target="_blank">Live version</a>
 
 ## Getting Started
 
